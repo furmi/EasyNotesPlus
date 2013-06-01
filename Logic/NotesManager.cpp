@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 #include "NotesManager.h"
+#include "NotesIterator.h"
+#include "ConstNotesIterator.h"
 
 class Note;
 class ExportStrategy;
@@ -20,38 +22,70 @@ using namespace EasyNote;
 namespace EasyNote 
 {
 
-// Initialisation de l'attribut statique
+	// Initialisation de l'attribut statique
 
-NotesManager* NotesManager::instance = 0;
+	NotesManager* NotesManager::instance = 0;
 
-// CONSTRUCTEURS/DESTRUCTEURS
+	// CONSTRUCTEURS/DESTRUCTEURS
 
-NotesManager::NotesManager():
-path("hello"),notes(set<Note*>()),factories(map<string,NoteFactory*>()),strategies(map<string,ExportStrategy*>())
-{
+	NotesManager::NotesManager():
+	path("hello"),notes(set<Note*>()),factories(map<string,NoteFactory*>()),strategies(map<string,ExportStrategy*>())
+	{
 	
-}
+	}
 
-NotesManager::~NotesManager ()
-{
-	releaseInstance();
-}
+	NotesManager::~NotesManager ()
+	{
+		releaseInstance();
+	}
 
-// MÉTHODES STATIQUES
+	// MÉTHODES STATIQUES
 
-NotesManager* NotesManager::getInstance()
-{
-	if (instance == 0)
-		instance = new NotesManager;
+	NotesManager* NotesManager::getInstance()
+	{
+		if (instance == 0)
+			instance = new NotesManager;
 	
-	return NotesManager::instance;
-}
+		return NotesManager::instance;
+	}
 
-void NotesManager::releaseInstance()
-{
-	if (instance != 0)
-		delete instance;
-}
+	void NotesManager::releaseInstance()
+	{
+		if (instance != 0)
+			delete instance;
+	}
+	
+	// MÉTHODES DES ITÉRATEURS
+	
+	NotesManager::NotesIterator NotesManager::begin ()
+	{
+		NotesIterator it(notes.begin());
+	
+		return it;
+	}
+	
+	NotesManager::NotesIterator NotesManager::end()
+	{
+		NotesIterator it(notes.end());
+		
+		return it;
+	}
+	
+	NotesManager::ConstNotesIterator NotesManager::cbegin ()
+	{
+		ConstNotesIterator it(notes.begin());
+		
+		return it;
+	}
+	
+	NotesManager::ConstNotesIterator NotesManager::cend ()
+	{
+		ConstNotesIterator it(notes.end());
+		
+		return it;
+	}
+	
+	
 
 }
 

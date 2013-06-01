@@ -17,35 +17,35 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-class NotesManager::NotesIterator
-{
-public:
+	// toute la classe peut être publique car elle est mise dans la partie privée de NotesManager
+
+	class NotesManager::NotesIterator
+	{
+	public:
 	
-	// Méthodes de déplacement
+		// Méthodes de déplacement
 	
-	NotesIterator first(); // retourne un itérateur sur le premier élément
-	NotesIterator end (); //retourne un itérateur sur le dernier élément
-	Note* operator++ (int); // Méthode next (c'est la notation post-fixée)
-	Note* operator-- (int);
-	Note* operator* (); // Retourne l'élément courant
+		NotesIterator first(); // retourne un itérateur sur le premier élément
+		NotesIterator end (); //retourne un itérateur sur le dernier élément
+		Note* operator++ (int); // Méthode next (c'est la notation post-fixée)
+		Note* operator-- (int);
+		Note* operator* (); // Retourne l'élément courant
 	
-	// Méthodes de contrôle
+		// Méthodes de contrôle
 	
-	// Vrai si l'itérateur est arrivé au bout du set (on ne devrait pas spécialiser? parcequ'on peut se déplacer dans les deux sens)
+		// Vrai si l'itérateur est arrivé au bout du set (on ne devrait pas spécialiser? parcequ'on peut se déplacer dans les deux sens)
 	
-	bool isDone (); 
+		bool isDone (); 
 	
-private:
-	// Constructeurs 
+		// Constructeurs 
 	
-	NotesIterator(); 
-	NotesIterator(set<Note*>::iterator );
+		NotesIterator(); 
+		NotesIterator(set<Note*>::iterator );
 	
-	// Attributs
+		// Attributs
 	
-	set<Note*>* iterated;	// Pointe vers la structure de données à parcourir pour qu'il l'ait tjr à jour
-	Note* current;			// Élément courant, c'est un pointeur pour qu'on puisse modifier l'endroit où il pointe (et l'elt)
-};
+		set<Note*>::iterator iterator;	// Pointe vers la structure de données à parcourir pour qu'il l'ait tjr à jour
+	};
 
 }
 

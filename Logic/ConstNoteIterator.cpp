@@ -8,11 +8,24 @@
 
 #include <iostream>
 #include "NotesManager.h"
-
+#include "ConstNotesIterator.h"
 
 using namespace EasyNote;
+using namespace std;
 
 namespace EasyNote
 {
+	// CONSTRUCTEURS
+	
+	NotesManager::ConstNotesIterator::ConstNotesIterator ()
+	{
+		
+	}
+	
+	NotesManager::ConstNotesIterator::ConstNotesIterator (set<Note*>::iterator it)
+	{
+		
+	}
+	
 	
 }

@@ -80,6 +80,8 @@ public:
 	
 	NotesIterator begin ();
 	NotesIterator end ();
+	ConstNotesIterator cbegin ();
+	ConstNotesIterator cend (); 
 		
 private:
 	// MÉTHODES PRIVÉES
