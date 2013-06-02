@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include <string>
 #include <set>
 #include "NotesManager.h"
 #include "NotesIterator.h"
@@ -15,6 +14,7 @@
 using namespace EasyNote;
 using namespace std;
 
+class Note;
 
 namespace EasyNote
 {
@@ -25,22 +25,52 @@ namespace EasyNote
 	
 	NotesManager::NotesIterator::NotesIterator(set<Note*>::iterator it)
 	{
-		
+		iterator = it;
 	}
 	
-	NotesManager::NotesIterator NotesManager::NotesIterator::first()
+	NotesManager::NotesIterator& NotesManager::NotesIterator::operator++ ()
 	{
-		
+		++iterator;
+	
+		return *this;
 	}
 	
+	NotesManager::NotesIterator& NotesManager::NotesIterator::operator-- ()
+	{
+		--iterator;
+		
+		return *this;
+	}
 	
+	NotesManager::NotesIterator NotesManager::NotesIterator::operator++ (int)
+	{
+		NotesIterator temp(iterator);
+		iterator++;
+		
+		return temp;
+	}
 	
+	NotesManager::NotesIterator NotesManager::NotesIterator::operator-- (int)
+	{
+		NotesIterator temp(iterator);
+		iterator--;
+		
+		return temp;
+	}
 	
+	Note* NotesManager::NotesIterator::operator* ()
+	{
+		return *iterator;
+	}
 	
+	bool NotesManager::NotesIterator::operator==(const NotesManager::NotesIterator& ni)
+	{
+		return iterator == ni.iterator; 
+	}
 	
-	
-	
-	
-	
+	bool NotesManager::NotesIterator::operator!=(const NotesIterator& ni)
+	{
+		return iterator != ni.iterator;
+	}
 	
 }

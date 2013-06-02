@@ -25,17 +25,21 @@ namespace EasyNote
 	
 		// Méthodes de déplacement
 	
-		NotesIterator first(); // retourne un itérateur sur le premier élément
-		NotesIterator end (); //retourne un itérateur sur le dernier élément
-		Note* operator++ (int); // Méthode next (c'est la notation post-fixée)
-		Note* operator-- (int);
+		NotesIterator& operator++ ();
+		NotesIterator& operator-- ();
+		NotesIterator operator++ (int); // Méthode next (c'est la notation post-fixée)
+		NotesIterator operator-- (int);
 		Note* operator* (); // Retourne l'élément courant
 	
-		// Méthodes de contrôle
-	
-		// Vrai si l'itérateur est arrivé au bout du set (on ne devrait pas spécialiser? parcequ'on peut se déplacer dans les deux sens)
-	
-		bool isDone (); 
+		// Méthodes de comparaison
+		
+		bool operator==(const NotesIterator&);
+		bool operator!=(const NotesIterator&);
+		
+		// Méthodes d'accès aux données
+		
+		const string getTitle () const; // À redéfinir
+		unsigned int getId() const; // À redéfinir
 	
 		// Constructeurs 
 	
@@ -44,7 +48,7 @@ namespace EasyNote
 	
 		// Attributs
 	
-		set<Note*>::iterator iterator;	// Pointe vers la structure de données à parcourir pour qu'il l'ait tjr à jour
+		set<Note*>::iterator iterator;	
 	};
 
 }

@@ -17,33 +17,38 @@ using namespace EasyNote;
 namespace EasyNote
 {
 
+	// toute la classe peut être publique car elle est mise dans la partie privée de NotesManager
+	
 	class NotesManager::ConstNotesIterator
 	{
 	public:
-	
-		// Méthodes de déplacement
-	
-		NotesIterator first() const; // retourne un itérateur sur le premier élément
-		NotesIterator end () const; //retourne un itérateur sur le dernier élément
-		Note* operator++ (int) const; // Méthode next (c'est la notation post-fixée)
-		Note* operator-- (int) const;
-		Note* operator* () const; // Retourne l'élément courant
-	
-		// Méthodes de contrôle
-	
-		// Vrai si l'itérateur est arrivé au bout du set (on ne devrait pas spécialiser? parcequ'on peut se déplacer dans les deux sens)
-	
-		bool isDone () const; 
-	
-		// Constructeurs 
-	
-		ConstNotesIterator(); 
-		ConstNotesIterator(set<Note*>::iterator);
-	
-		// Attributs
-	
-		set<Note*> iterator;	// Pointe vers la structure de données à parcourir pour qu'il l'ait tjr à jour
 		
+		// Méthodes de déplacement
+		
+		const ConstNotesIterator& operator++ ();
+		const ConstNotesIterator& operator-- ();
+		const ConstNotesIterator operator++ (int); // Méthode next (c'est la notation post-fixée)
+		const ConstNotesIterator operator-- (int);
+		const Note* const operator* () const; // Retourne l'élément courant
+		
+		// Méthodes de comparaison
+		
+		bool operator==(const ConstNotesIterator&) const;
+		bool operator!=(const ConstNotesIterator&) const;
+		
+		// Méthodes d'accès aux données
+		
+		const string getTitle () const; // À redéfinir
+		unsigned int getId() const; // À redéfinir
+		
+		// Constructeurs 
+		
+		ConstNotesIterator(); 
+		ConstNotesIterator(set<Note*>::iterator );
+		
+		// Attributs
+		
+		set<Note*>::iterator iterator;	
 	};
 
 }
