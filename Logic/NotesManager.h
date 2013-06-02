@@ -82,6 +82,10 @@ public:
 	NotesIterator end ();
 	ConstNotesIterator cbegin ();
 	ConstNotesIterator cend (); 
+	
+	// Méthodes d'accès à la factory
+	
+	Note* getNewNote (string str,string title);
 		
 private:
 	// MÉTHODES PRIVÉES

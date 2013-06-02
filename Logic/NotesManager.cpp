@@ -85,7 +85,12 @@ namespace EasyNote
 		return it;
 	}
 	
+	// Méthode d'accès à factories
 	
+	/*Note* NotesManager::getNewNote (string str,string title)
+	{
+		return factories[str]->builNewNote(title);
+	} */
 
 }
 
