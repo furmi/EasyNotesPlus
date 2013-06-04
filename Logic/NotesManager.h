@@ -80,8 +80,8 @@ public:
 	
 	NotesIterator begin ();
 	NotesIterator end ();
-	ConstNotesIterator cbegin ();
-	ConstNotesIterator cend (); 
+	ConstNotesIterator cbegin () const;
+	ConstNotesIterator cend () const; 
 	
 	// Méthodes d'accès à la factory
 	

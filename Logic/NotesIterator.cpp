@@ -23,9 +23,8 @@ namespace EasyNote
 		
 	}
 	
-	NotesManager::NotesIterator::NotesIterator(set<Note*>::iterator it)
+	NotesManager::NotesIterator::NotesIterator(set<Note*>::iterator it):iterator(it)
 	{
-		iterator = it;
 	}
 	
 	NotesManager::NotesIterator& NotesManager::NotesIterator::operator++ ()

@@ -41,11 +41,14 @@ namespace EasyNote
 		const string getTitle () const; // À redéfinir
 		unsigned int getId() const; // À redéfinir
 	
-		// Constructeurs 
+	private:
+		friend class NotesManager;
 	
+		// Constructeurs 
+		
 		NotesIterator(); 
 		NotesIterator(set<Note*>::iterator );
-	
+			
 		// Attributs
 	
 		set<Note*>::iterator iterator;	

@@ -30,21 +30,21 @@ namespace EasyNote
 			iterator = it;
 	}
 	
-	const NotesManager::ConstNotesIterator& NotesManager::ConstNotesIterator::operator++ ()
+	NotesManager::ConstNotesIterator& NotesManager::ConstNotesIterator::operator++ ()
 	{
 		++iterator;
 		
 		return *this;
 	}
 	
-	const NotesManager::ConstNotesIterator& NotesManager::ConstNotesIterator::operator-- () 
+	NotesManager::ConstNotesIterator& NotesManager::ConstNotesIterator::operator-- () 
 	{
 		--iterator;
 		
 		return *this;
 	}
 	
-	const NotesManager::ConstNotesIterator NotesManager::ConstNotesIterator::operator++ (int)
+	NotesManager::ConstNotesIterator NotesManager::ConstNotesIterator::operator++ (int)
 	{
 		ConstNotesIterator temp(iterator);
 		iterator++;
@@ -52,7 +52,7 @@ namespace EasyNote
 		return temp;
 	}
 	
-	const NotesManager::ConstNotesIterator NotesManager::ConstNotesIterator::operator-- (int)
+	NotesManager::ConstNotesIterator NotesManager::ConstNotesIterator::operator-- (int)
 	{
 		ConstNotesIterator temp(iterator);
 		iterator--;

@@ -25,10 +25,10 @@ namespace EasyNote
 		
 		// Méthodes de déplacement
 		
-		const ConstNotesIterator& operator++ ();
-		const ConstNotesIterator& operator-- ();
-		const ConstNotesIterator operator++ (int); // Méthode next (c'est la notation post-fixée)
-		const ConstNotesIterator operator-- (int);
+		ConstNotesIterator& operator++ ();
+		ConstNotesIterator& operator-- ();
+		ConstNotesIterator operator++ (int); // Méthode next (c'est la notation post-fixée)
+		ConstNotesIterator operator-- (int);
 		const Note* const operator* () const; // Retourne l'élément courant
 		
 		// Méthodes de comparaison
@@ -41,11 +41,16 @@ namespace EasyNote
 		const string getTitle () const; // À redéfinir
 		unsigned int getId() const; // À redéfinir
 		
+		
+	private:
+		
+		friend class NotesManager;
+		
 		// Constructeurs 
 		
 		ConstNotesIterator(); 
 		ConstNotesIterator(set<Note*>::iterator );
-		
+	
 		// Attributs
 		
 		set<Note*>::iterator iterator;	

@@ -71,14 +71,14 @@ namespace EasyNote
 		return it;
 	}
 	
-	NotesManager::ConstNotesIterator NotesManager::cbegin ()
+	NotesManager::ConstNotesIterator NotesManager::cbegin () const
 	{
 		ConstNotesIterator it(notes.begin());
 		
 		return it;
 	}
 	
-	NotesManager::ConstNotesIterator NotesManager::cend ()
+	NotesManager::ConstNotesIterator NotesManager::cend () const
 	{
 		ConstNotesIterator it(notes.end());
 		
