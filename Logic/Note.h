@@ -124,6 +124,10 @@ namespace EasyNote
         void load();
 
     };
+	
+	// Genral Operators
+	
+	ostream& operator<<(ostream& f, const Article& a);
 }
 
 #endif
