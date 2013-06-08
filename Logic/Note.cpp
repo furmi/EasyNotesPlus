@@ -1,5 +1,5 @@
 //
-//  Notes.cpp
+//  Note.cpp
 //  EasyNotePlus_thomas
 //
 //  Created by Thomas Fuhrmann on 05/06/13.
@@ -12,16 +12,6 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-    //unsigned int Note::coefficient_timestamp = 0;
-
-    /*int Note::getMilliCount()
-    {
-        timeb tb;
-        ftime(&tb);
-        int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
-        return nCount;
-    }*/
-
     ostream& operator<<(ostream& f, const Note& n)
     {
         f<<"ID : "<<n.getId()<<"\n";
@@ -29,18 +19,23 @@ namespace EasyNote
         return f;
     }
 
-    //
-    /*
-    ****************************************
-    */
-    //
-
-    ostream& operator<<(ostream& f, const Article& a)
+    Note Note::operator=(const Note& n)
     {
-        f<<a;
-        f<<"Texte : "<<a.getText()<<"\n";
-        return f;
+        id = generateTimeStamp();
+        title = n.title;
+        is_Loaded = 1;
+        is_Modified = 1;
+    }
+
+    unsigned long int Note::generateTimeStamp()
+    {
+        struct timeval detail_time;
+        unsigned long int timeSys;
+        gettimeofday(&detail_time,NULL);
+        usleep(1);
+        timeSys = time(0);
+        timeSys = timeSys*1000+detail_time.tv_usec/1000;
+        cout<<"Test timestamp final : "<<timeSys<<"\n";
+        return timeSys;
     }
 }
-
-

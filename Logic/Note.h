@@ -1,18 +1,20 @@
 //
-//  Notes.h
+//  Note.h
 //  EasyNotePlus_thomas
 //
 //  Created by Thomas Fuhrmann on 05/06/13.
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#ifndef EasyNotePlus_thomas_Notes_h
-#define EasyNotePlus_thomas_Notes_h
+#ifndef EasyNotePlus_thomas_Note_h
+#define EasyNotePlus_thomas_Note_h
 #include <string>
 #include <iostream>
 #include <ctime>
+#include <sys/time.h>
+#include <unistd.h>
 
-/** \class Notes
+/** \class Note
 *
 *   Classe abstraite qui donne la structure de base de l'ensemble des objets à gérer.
 *   Cette classe est la super classe de Article, Document et Media.
@@ -35,29 +37,32 @@ namespace EasyNote
     // ATTRIBUTES
     protected:
         string title;
-        bool isLoaded;
-        bool isModified;
+        bool is_Loaded;
+        bool is_Modified;
     private:
-        unsigned int id;
-        //static unsigned int coefficient_timestamp;
+        unsigned long int id;
 
     //METHODES
 
     public:
-
-        //static int getMilliCount();
+    /**
+	 * \fn generateTimeStamp: \brief Permet de générer un ID unique
+	 */
+        static unsigned long int generateTimeStamp();
 
     // CONSTRUCTEURS / DESTRUCTEURS
                 //de base l'attribut isModified est à 1 pour prendre en charge la sauvegarde à la création
-        Note():title(0),isLoaded(0),isModified(1),id(time(0)-100000000) {}
-        Note(const Note& n):title(n.getTitle()),isLoaded(0),isModified(1),id(time(0)+10000000) {}
+        Note():title(0),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         Note operator=(const Note&);
-        Note(const string& titre):title(titre),isLoaded(0),isModified(1),id(time(0)-100000000) {}
+        Note(const string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         virtual ~Note() {}
 
 	 // GETTERS
-        const unsigned int getId() const {return id;}
+        const unsigned long int getId() const {return id;}
         const string& getTitle() const {return title;}
+        const bool isModified() const {return is_Modified;}
+        const bool isLoaded() const {return is_Loaded;}
 
 	 // SETTERS
 
@@ -83,51 +88,6 @@ namespace EasyNote
     };
 
     ostream& operator<<(ostream& f, const Note& n);
-
-
-//
-//
-/*
-********************************************************************************
-*/
-//
-//
-
-    class Article : public Note
-    /**
-	*	\class Article : \brief Classe fille de Note, gère des articles.
-	*/
-    {
-    // Attributes
-
-        string text;
-
-    //METHODES
-
-    public:
-
-    // CONSTRUCTEURS / DESTRUCTEURS
-        Article():Note(),text(0) {}
-        Article(const string& titre,const string& texte):Note(titre), text(texte) {}
-        Article(const Article& a):Note(a), text(a.getText()) {}
-        Article operator=(const Article&);
-        virtual ~Article() {}
-
-	 // GETTERS
-        const string& getText() const {return text;}
-
-	 // SETTERS
-
-        void setText(const string& newText) {text = newText;}
-
-    // LOAD
-        void load();
-
-    };
-	
-	// Genral Operators
-	
-	ostream& operator<<(ostream& f, const Article& a);
 }
 
 #endif
