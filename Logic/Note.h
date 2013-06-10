@@ -56,7 +56,7 @@ namespace EasyNote
         Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         Note operator=(const Note&);
         Note(const string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-        virtual ~Note() {}
+        virtual ~Note();
 
 	 // GETTERS
         const unsigned long int getId() const {return id;}

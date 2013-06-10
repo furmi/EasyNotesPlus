@@ -12,7 +12,11 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-    ostream& operator<<(ostream& f, const Note& n)
+	Note::~Note()
+	{
+	}
+	
+	ostream& operator<<(ostream& f, const Note& n)
     {
         f<<"ID : "<<n.getId()<<"\n";
         f<<"Titre : "<<n.getTitle()<<"\n";
