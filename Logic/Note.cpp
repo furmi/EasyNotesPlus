@@ -29,6 +29,8 @@ namespace EasyNote
         title = n.title;
         is_Loaded = 1;
         is_Modified = 1;
+		
+		return *this;
     }
 
     unsigned long int Note::generateTimeStamp()
