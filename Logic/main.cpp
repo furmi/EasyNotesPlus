@@ -1,10 +1,10 @@
 #include <iostream>
-#include "Note.h";
-#include "Article.h";
-#include "Media.h";
-#include "Image.h";
-#include "Video.h";
-#include "Audio.h";
+#include "Note.h"
+#include "Article.h"
+#include "Media.h"
+#include "Image.h"
+#include "Video.h"
+#include "Audio.h"
 
 using namespace std;
 
