@@ -12,6 +12,7 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
+	Image::~Image() {}
 
 }
 

@@ -49,8 +49,8 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Media():Note(),description(0), path(0) {}
-        Media(const string& titre, const string& desc):Note(titre), description(desc), path(0) {}
+        Media():Note(),description(""), path("") {}
+        Media(const string& titre, const string& desc):Note(titre), description(desc), path("") {}
         Media(const  string& titre, const  string& desc, const  string& chemin):Note(titre), description(desc), path(chemin) {}
         Media(const Media& m):Note(m), description(m.getDescription()), path(m.getPath()) {}
         Media operator=(const Media&);

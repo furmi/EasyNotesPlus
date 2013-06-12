@@ -41,7 +41,7 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Video()/*:Media()*/ {}
+        Video() {}
         Video(const  string& titre, const  string& desc):Media(titre,desc) {}
         Video(const  string& titre, const  string& desc, const  string& chemin):Media(titre,desc,chemin) {}
         Video(const Video& i):Media(i) {}

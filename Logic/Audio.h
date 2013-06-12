@@ -37,12 +37,12 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Audio():Media() {}
+        Audio() {}
         Audio(const string& titre, const string& desc):Media(titre,desc) {}
         Audio(const string& titre, const string& desc, const string& chemin):Media(titre,desc,chemin) {}
         Audio(const Audio& i):Media(i) {}
         Audio operator=(const Audio&);
-        virtual ~Audio() {}
+        virtual ~Audio();
     };
 }
 

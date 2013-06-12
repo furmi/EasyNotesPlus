@@ -44,7 +44,7 @@ namespace EasyNote
         Document(const string& titre):Note(titre), notes(0) {}
         Document(const Document& d):Note(d), notes(d.notes) {}
         Document operator=(const Document&);
-        virtual ~Document() {}
+        virtual ~Document();
 
     // LOAD
         void load();

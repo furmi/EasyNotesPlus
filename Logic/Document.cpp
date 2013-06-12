@@ -24,5 +24,7 @@ namespace EasyNote
     {
 
     }
+
+    Document::~Document() {}
 }
 

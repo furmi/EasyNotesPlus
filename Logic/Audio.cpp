@@ -12,7 +12,7 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-
+	Audio::~Audio() {}
 }
 
 

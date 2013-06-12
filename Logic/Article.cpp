@@ -30,4 +30,6 @@ namespace EasyNote
         f<<"Texte : "<<a.getText()<<"\n";
         return f;
     }
+
+    Article::~Article() {}
 }

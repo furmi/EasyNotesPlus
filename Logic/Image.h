@@ -37,12 +37,12 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Image():Media() {}
+        Image() {}
         Image(const string& titre, const string& desc):Media(titre,desc) {}
         Image(const string& titre, const string& desc, const string& chemin):Media(titre,desc,chemin) {}
         Image(const Image& i):Media(i) {}
         Image operator=(const Image&);
-        virtual ~Image() {}
+        virtual ~Image();
     };
 }
 

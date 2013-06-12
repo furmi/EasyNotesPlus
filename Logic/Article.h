@@ -44,7 +44,7 @@ namespace EasyNote
         Article(const string& titre,const string& texte):Note(titre), text(texte) {}
         Article(const Article& a):Note(a), text(a.getText()) {}
         Article operator=(const Article&);
-        virtual ~Article() {}
+        virtual ~Article();
 
 	 // GETTERS
         const string& getText() const {return text;}
