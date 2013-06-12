@@ -71,11 +71,9 @@ public:
 	
 	//void load();	Décommenter dès que notes ou un de ses classes filles est implémentée
 	
-private:
 	class NotesIterator;	// Itérateur non constant
 	class ConstNotesIterator;	// Itérateur constant
 	
-public:
 	// Méthode de NotesManager permettant d'obtenir l'itérateur
 	
 	NotesIterator begin ();

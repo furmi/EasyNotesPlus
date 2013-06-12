@@ -29,7 +29,7 @@ namespace EasyNote
 	// CONSTRUCTEURS/DESTRUCTEURS
 
 	NotesManager::NotesManager():
-	path("hello"),notes(set<Note*>()),factories(map<string,NoteFactory*>()),strategies(map<string,ExportStrategy*>())
+	path("hello")
 	{
 	
 	}
