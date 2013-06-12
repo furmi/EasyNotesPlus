@@ -12,7 +12,12 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-    void Media::load()
+	Media::~Media()
+	{
+		
+	}
+	
+	void Media::load()
     {
 
     }

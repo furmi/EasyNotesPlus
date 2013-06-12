@@ -5,12 +5,17 @@
 #include "Image.h"
 #include "Video.h"
 #include "Audio.h"
+#include "ArticleFactory.h"
 
 using namespace std;
 
 int main()
 {
-    EasyNote::Article a("titre","texteeeee");
+    //EasyNote::Article a("titre","texteeeee");
+	EasyNote::ArticleFactory af;
+	EasyNote::Article* aa = af.factory();
+	EasyNote::Article a(*aa);
+	a.setTitle("Hello bobby");
     EasyNote::Article b(a);
     EasyNote::Article c(a);
 

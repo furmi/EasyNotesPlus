@@ -9,6 +9,23 @@
 #ifndef EasyNotePlus_julien_ImageFactory_h
 #define EasyNotePlus_julien_ImageFactory_h
 
+#include "NoteFactory.h"
 
+using namespace std;
+//class string;
+
+namespace EasyNote
+{
+	using namespace EasyNote;
+	class Note;
+	
+	class ImageFactory:public NoteFactory
+	{
+	public:
+		virtual ~ImageFactory();
+		
+		virtual Note* factory();
+	};
+}
 
 #endif

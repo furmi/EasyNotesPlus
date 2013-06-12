@@ -23,7 +23,7 @@ namespace EasyNote
         return f;
     }
 
-    Note Note::operator=(const Note& n)
+    Note& Note::operator=(const Note& n)
     {
         id = generateTimeStamp();
         title = n.title;

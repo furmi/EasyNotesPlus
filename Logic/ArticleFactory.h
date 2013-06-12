@@ -9,6 +9,29 @@
 #ifndef EasyNotePlus_julien_ArticleFactory_h
 #define EasyNotePlus_julien_ArticleFactory_h
 
+#include "NoteFactory.h"
+#include "Article.h"
+#include "Note.h"
+#include <string>
 
+using namespace std;
+
+namespace EasyNote
+{
+	using namespace EasyNote;
+	
+	class ArticleFactory:public NoteFactory
+	{
+		
+	public:
+		virtual Article* factory();
+		
+		// Destructeur
+		
+		virtual ~ArticleFactory();
+		
+	};
+	
+}
 
 #endif

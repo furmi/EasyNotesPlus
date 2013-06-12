@@ -6,4 +6,22 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <iostream>
+#include "DocumentFactory.h"
+#include "Note.h"
+#include "Document.h"
+
+using namespace std;
+using namespace EasyNote;
+
+namespace EasyNote 
+{
+	DocumentFactory::~DocumentFactory()
+	{
+		
+	}
+
+	Note* DocumentFactory::factory()
+	{
+		return new Document;
+	}
+}

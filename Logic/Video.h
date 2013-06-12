@@ -9,6 +9,7 @@
 #ifndef EasyNotePlus_thomas_Video_h
 #define EasyNotePlus_thomas_Video_h
 
+#include <string>
 #include "Media.h"
 
 /** \class Video
@@ -17,7 +18,8 @@
 *   Cette classe est la sous-classe de la classe Media.
 */
 
-using namespace EasyNote;
+using namespace std;
+
 
 // Références
 
@@ -26,6 +28,8 @@ class Note;
 
 namespace EasyNote
 {
+	using namespace EasyNote;
+
     class Video : public Media
     /**
 	*	\class Video : \brief Classe fille de Media, instancie des vidéos.
@@ -37,12 +41,12 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Video():Media() {}
-        Video(const string& titre, const string& desc):Media(titre,desc) {}
-        Video(const string& titre, const string& desc, const string& chemin):Media(titre,desc,chemin) {}
+        Video()/*:Media()*/ {}
+        Video(const  string& titre, const  string& desc):Media(titre,desc) {}
+        Video(const  string& titre, const  string& desc, const  string& chemin):Media(titre,desc,chemin) {}
         Video(const Video& i):Media(i) {}
         Video operator=(const Video&);
-        virtual ~Video() {}
+        virtual ~Video();
     };
 }
 

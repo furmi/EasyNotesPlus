@@ -29,6 +29,7 @@ class ExportStrategy;
 
 namespace EasyNote
 {
+
     class Note
     /**
 	*	\class Note : \brief super-classe abstraite de tous les objets gérés.
@@ -36,7 +37,7 @@ namespace EasyNote
     {
     // ATTRIBUTES
     protected:
-        string title;
+		string title;
         bool is_Loaded;
         bool is_Modified;
     private:
@@ -52,21 +53,25 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
                 //de base l'attribut isModified est à 1 pour prendre en charge la sauvegarde à la création
-        Note():title(0),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-        Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-        Note operator=(const Note&);
-        Note(const string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note():title(""),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note(const   string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+		Note(const   string& titre,unsigned long int id_):title(titre),id(id_){}
+		
+		Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note& operator=(const Note&);
+		
         virtual ~Note();
 
 	 // GETTERS
         const unsigned long int getId() const {return id;}
-        const string& getTitle() const {return title;}
+        const   string& getTitle() const {return title;}
         const bool isModified() const {return is_Modified;}
         const bool isLoaded() const {return is_Loaded;}
 
 	 // SETTERS
 
-        void setTitle(const string& newTitle) {title = newTitle;}
+        void setTitle(const   string& newTitle) {title = newTitle;}
+		void setId(unsigned long int id_){id = id_;}
 
         //Export
     /**
@@ -78,13 +83,13 @@ namespace EasyNote
     /**
 	 * \fn load: \brief Charge une note (virtuelle pure)
 	 */
-//        virtual void load() = 0;
+        virtual void load() = 0;
 
     /**
 	 * \fn exportAsPart: \brief Charge une note par parties
 	 */
 
-        string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+          string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };
 
     ostream& operator<<(ostream& f, const Note& n);

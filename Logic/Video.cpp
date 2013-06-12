@@ -13,6 +13,11 @@ using namespace EasyNote;
 namespace EasyNote
 {
 
+	Video::~Video()
+	{
+		
+	}
+
 }
 
 

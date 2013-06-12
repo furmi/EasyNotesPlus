@@ -10,6 +10,7 @@
 #define EasyNotePlus_thomas_Media_h
 
 #include "Note.h"
+#include <string>
 
 /** \class Media
 *
@@ -19,15 +20,16 @@
 */
 
 using namespace EasyNote;
+using namespace std;
 
 // Références
 
 class ExportStrategy;
-class Note;
+//class Note;
 
 namespace EasyNote
 {
-    class Media : public Note
+    class Media :public Note
     /**
 	*	\class Media : \brief Classe fille de Note, abstraite, donne la structure des médias.
 	*/
@@ -37,7 +39,7 @@ namespace EasyNote
         /**
         *	\var description: \brief attribut contenant la description du média
         */
-        string description;
+		string description;
         /**
         *	\var path: \brief attribut contenant le chemin du média
         */
@@ -49,10 +51,10 @@ namespace EasyNote
     // CONSTRUCTEURS / DESTRUCTEURS
         Media():Note(),description(0), path(0) {}
         Media(const string& titre, const string& desc):Note(titre), description(desc), path(0) {}
-        Media(const string& titre, const string& desc, const string& chemin):Note(titre), description(desc), path(chemin) {}
+        Media(const  string& titre, const  string& desc, const  string& chemin):Note(titre), description(desc), path(chemin) {}
         Media(const Media& m):Note(m), description(m.getDescription()), path(m.getPath()) {}
         Media operator=(const Media&);
-        virtual ~Media() {}
+        virtual ~Media();
 
     // GETTERS
         const string& getDescription() const {return description;}

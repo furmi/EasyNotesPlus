@@ -33,14 +33,14 @@ namespace EasyNote
     {
     // Attributes
 
-        string text;
+	string text;
 
     //METHODES
 
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Article():Note(),text(0) {}
+        Article():Note(),text("") {}
         Article(const string& titre,const string& texte):Note(titre), text(texte) {}
         Article(const Article& a):Note(a), text(a.getText()) {}
         Article operator=(const Article&);

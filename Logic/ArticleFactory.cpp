@@ -6,4 +6,22 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <iostream>
+#include "ArticleFactory.h"
+#include "Note.h"
+#include "Article.h"
+
+using namespace std;
+using namespace EasyNote;
+
+namespace EasyNote 
+{
+	ArticleFactory::~ArticleFactory()
+	{
+		
+	}
+	
+	Article* ArticleFactory::factory()
+	{
+		return new Article;
+	}
+}

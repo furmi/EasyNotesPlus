@@ -6,4 +6,23 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <iostream>
+
+#include "AudioFactory.h"
+#include "Note.h"
+#include "Audio.h"
+
+using namespace std;
+using namespace EasyNote;
+
+namespace EasyNote 
+{
+	AudioFactory::~AudioFactory()
+	{
+		
+	}
+	
+	Note* AudioFactory::factory()
+	{
+		return new Audio;
+	}
+}

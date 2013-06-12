@@ -6,4 +6,22 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <iostream>
+#include "VideoFactory.h"
+#include "Note.h"
+#include "Video.h"
+
+using namespace std;
+using namespace EasyNote;
+
+namespace EasyNote 
+{
+	VideoFactory::~VideoFactory()
+	{
+		
+	}
+	
+	Note* VideoFactory::factory()
+	{
+		return new Video;
+	}
+}
