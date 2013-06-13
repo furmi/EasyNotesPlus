@@ -6,29 +6,31 @@
 #include "Video.h"
 #include "Audio.h"
 #include "ArticleFactory.h"
+#include "NotesManager.h"
+#include "NotesIterator.h"
 
 using namespace std;
 
 int main()
 {
-    //EasyNote::Article a("titre","texteeeee");
 	EasyNote::ArticleFactory af;
 	EasyNote::Article* aa = af.factory();
 	EasyNote::Article a(*aa);
 	a.setTitle("Hello bobby");
     EasyNote::Article b(a);
     EasyNote::Article c(a);
-
-
+	
+	
     /*a.generateTimeStamp();
-
-    cout <<"a : \n";
-    cout << a << endl;
-    b.setTitle("Titre2 B");
-    cout<<b.getTitle()<<"\n";
-    a.setText("Mon premier text pour mother fucking a !");
-    cout<<a.getText()<<"\n";*/
-
+	 
+	 cout <<"a : \n";
+	 cout << a << endl;
+	 b.setTitle("Titre2 B");
+	 cout<<b.getTitle()<<"\n";
+	 a.setText("Mon premier text pour mother fucking a !");
+	 cout<<a.getText()<<"\n";*/
+	
+	
     cout <<"a : \n";
     cout << a << endl;
     a.setTitle("tire a mod");
@@ -39,5 +41,6 @@ int main()
     cout << c << endl;
     cout <<"d : \n";
     cout << d << endl;
-    return 0;
+    
+	return EXIT_SUCCESS;
 }

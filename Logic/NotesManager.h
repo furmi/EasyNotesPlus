@@ -6,11 +6,23 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
+/******************************************************************************
+							I M P O R T A N T
+
+	À l'heure actuelle, la création d'une note avec une factory provoque 
+	une fuite de mémoire. Pour la résoudre, il faudra explicitement détruire
+	les objets alloué dynamiquement grâce à une méthode 
+	void rmNote(unsigned long int) qui pourra être activée par l'utilisateur
+	depuis la corbeille.
+
+******************************************************************************/
+
 #ifndef EasyNotePlus_julien_NotesManager_h
 #define EasyNotePlus_julien_NotesManager_h
 #include <set>
 #include <map>
-#include <string> // Temporaire, j'inclus Qt une fois que j'ai implémenté qqs trucs 
+#include <string> // Temporaire, j'inclus Qt une fois que j'ai implémenté qqs trucs
+#include "NoteFactory.h" 
 
 /** \class NotesManager
 *
@@ -24,7 +36,7 @@ using namespace std;
 // Références
 
 class Note;
-class NoteFactory;
+//class NoteFactory;
 class ExportStrategy;
 
 

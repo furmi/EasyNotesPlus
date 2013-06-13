@@ -9,6 +9,7 @@
 #include "NoteFactory.h"
 #include <string>
 #include "Note.h"
+#include "NotesManager.h"
 
 
 /*********************************************************************
@@ -72,6 +73,10 @@ namespace EasyNote
 		// Recopie des attribus
 		
 		*n = note;
+		
+		// Changement de l'id car c'est une copie, pas un clone
+		
+		n->setId(Note::generateTimeStamp());
 		
 		return n;
 	}

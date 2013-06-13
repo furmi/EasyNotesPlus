@@ -6,15 +6,21 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <iostream>
 #include <string>
 #include "NotesManager.h"
 #include "NotesIterator.h"
 #include "ConstNotesIterator.h"
+#include "NoteFactory.h"
+#include "Note.h"
+#include "ArticleFactory.h"
+#include "DocumentFactory.h"
+#include "ArticleFactory.h"
+#include "VideoFactory.h"
+#include "ImageFactory.h"
+#include "AudioFactory.h"
 
-class Note;
+//class Note;
 class ExportStrategy;
-class NoteFactory;
 
 using namespace EasyNote;
 
@@ -31,11 +37,27 @@ namespace EasyNote
 	NotesManager::NotesManager():
 	path("hello")
 	{
-	
+		// Construction des diverses factories
+		
+		factories["DocumentFactory"] = new DocumentFactory;
+		factories["ArticleFactory"] = new ArticleFactory;
+		factories["VideoFactory"] = new VideoFactory;
+		factories["ImageFactory"] = new ImageFactory;
+		factories["AudioFactory"] = new AudioFactory;
 	}
 
 	NotesManager::~NotesManager ()
 	{
+		// Destruction des factories
+		
+		delete factories["DocumentFactory"];
+		delete factories["ArticleFactory"];
+		delete factories["VideoFactory"];
+		delete factories["ImageFactory"];
+		delete factories["AudioFactory"];
+		
+		// Destruction du Note manager
+		
 		releaseInstance();
 	}
 
@@ -87,10 +109,10 @@ namespace EasyNote
 	
 	// Méthode d'accès à factories
 	
-	/*Note* NotesManager::getNewNote (string str,string title)
+	Note* NotesManager::getNewNote (string str,string title)
 	{
-		return factories[str]->builNewNote(title);
-	} */
+		return factories[str]->buildNewNote(title);
+	} 
 
 }
 
