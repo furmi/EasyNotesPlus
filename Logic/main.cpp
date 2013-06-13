@@ -8,10 +8,12 @@
 #include "ArticleFactory.h"
 #include "NotesManager.h"
 #include "NotesIterator.h"
+#include <QApplication>
+#include "mainwindow.h"
 
 using namespace std;
 
-int main()
+int main(int argc,char* argv[])
 {
 	EasyNote::ArticleFactory af;
 	EasyNote::Article* aa = af.factory();
@@ -41,6 +43,10 @@ int main()
     cout << c << endl;
     cout <<"d : \n";
     cout << d << endl;
+
+    QApplication app(argc,argv);
+    MainWindow mw;
+    mw.show();
     
-	return EXIT_SUCCESS;
+    return app.exec();
 }
