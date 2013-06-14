@@ -14,11 +14,63 @@ namespace EasyNote
 {
 	Media::~Media()
 	{
-		
-	}
-	
-	void Media::load()
-    {
 
+	}
+
+    void Media::load()
+    {
+        if (!this->isLoaded())   //permet de tester si la note est déjà chargée
+        {
+            //conversion de l'ID en string
+            std::ostringstream oss;
+            oss << this->getId();
+            std::string id = oss.str();
+
+            string fichier = (id+".enp");
+            ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
+            if (file)
+            {
+                string title, desc, path;
+                file >> title >> desc >> path;  //permet de lire les éléments à partir du fichier
+                file.close();
+                //écriture des éléments dans l'objet
+                this->setDescription(desc);
+                this->setPath(path);
+                this->is_Loaded = 1; //signifie que le fichier est chargé
+                this->is_Modified = 0;
+            }
+            else
+                cerr << "Impossible d'ouvrir le fichier !" << endl;
+        }
+    }
+
+    void Media::save()
+    {
+    //conversion de l'ID en string
+        std::ostringstream oss;
+        oss << this->getId();
+        std::string id = oss.str();
+
+    //sauvegarde du fichier qui correspond à la note
+        if(this->isModified())  //permet de tester si la note a été modifiée
+        {
+            string fichier = (id+".enp");
+            ofstream file(fichier.c_str(), ios::out | ios::trunc);  //ouverture en écriture, fichier vierge
+            if (file)
+            {
+                file << this->getTitle() << "\n" << this->getDescription() << "\n" << this->getPath() << endl; //permet d'écrire dans un fichier
+                file.close();
+                this->is_Modified = 0;  //objet sauvegardé donc il n'est plus modifié
+            }
+            else
+                cerr << "Impossible d'ouvrir le fichier !" << endl;
+        }
+    /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+    /* La méthode sera surchagée dans les classes filles de Media afin de pouvoir
+    avoir une méthode adéquate pour l'insertion de la note dans le fichier de description
+    du NoteManager (à gérer au niveau des filles car il faut indiquer le type de document.
+    La méthode surchargée fera appel à la méthode de Média pour ce qui est de la sauvegarde
+    du fichier sur le disque dur.
+    */
     }
 }

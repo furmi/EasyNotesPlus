@@ -19,13 +19,11 @@
 *   Cette classe est la super-classe des classes Image, Video et Audio.
 */
 
-using namespace EasyNote;
 using namespace std;
 
 // Références
 
 class ExportStrategy;
-//class Note;
 
 namespace EasyNote
 {
@@ -53,7 +51,7 @@ namespace EasyNote
         Media(const string& titre, const string& desc):Note(titre), description(desc), path("") {}
         Media(const  string& titre, const  string& desc, const  string& chemin):Note(titre), description(desc), path(chemin) {}
         Media(const Media& m):Note(m), description(m.getDescription()), path(m.getPath()) {}
-        Media operator=(const Media&);
+//        Media operator=(const Media&);
         virtual ~Media();
 
     // GETTERS
@@ -65,9 +63,12 @@ namespace EasyNote
         void setDescription(const string& newText) {description = newText;}
         void setPath(const string& newPath) {path = newPath;}
 
-    // LOAD
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
+
+    // LOAD / SAVE
     protected:
         void load();
+        void save();
     };
 }
 

@@ -7,15 +7,16 @@
 //
 
 #include "Note.h"
+#include "ExportStrategy.h"
 
-using namespace EasyNote;
+//using namespace EasyNote;
 
 namespace EasyNote
 {
 	Note::~Note()
 	{
 	}
-	
+
 	ostream& operator<<(ostream& f, const Note& n)
     {
         f<<"ID : "<<n.getId()<<"\n";
@@ -29,7 +30,7 @@ namespace EasyNote
         title = n.title;
         is_Loaded = 1;
         is_Modified = 1;
-		
+
 		return *this;
     }
 
@@ -41,7 +42,15 @@ namespace EasyNote
         usleep(1);
         timeSys = time(0);
         timeSys = timeSys*1000+detail_time.tv_usec/1000;
-        cout<<"Test timestamp final : "<<timeSys<<"\n";
         return timeSys;
+    }
+
+    string Note::exportN(ExportStrategy* es)
+    {
+        string exp = "";
+        exp.append(es->header(this));
+        exp.append(this->exportAsPart(es,1));
+        exp.append(es->footer(this));
+        return exp;
     }
 }

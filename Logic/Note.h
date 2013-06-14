@@ -13,6 +13,10 @@
 #include <ctime>
 #include <sys/time.h>
 #include <unistd.h>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+//#include "ExportStrategy.h"
 
 /** \class Note
 *
@@ -25,10 +29,11 @@ using namespace std;
 
 // Références
 
-class ExportStrategy;
+
 
 namespace EasyNote
 {
+    class ExportStrategy;
 
     class Note
     /**
@@ -56,10 +61,10 @@ namespace EasyNote
         Note():title(""),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         Note(const   string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
 		Note(const   string& titre,unsigned long int id_):title(titre),id(id_){}
-		
+
 		Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         Note& operator=(const Note&);
-		
+
         virtual ~Note();
 
 	 // GETTERS
@@ -70,14 +75,20 @@ namespace EasyNote
 
 	 // SETTERS
 
-        void setTitle(const   string& newTitle) {title = newTitle;}
-		void setId(unsigned long int id_){id = id_;}
+        void setTitle(const   string& newTitle) {title = newTitle; is_Modified = 1;}
+		void setId(unsigned long int id_){id = id_; is_Modified = 1;}
 
         //Export
     /**
 	 * \fn export: \brief Exporte une note.
 	 */
-//        string export (const ExportStrategy* es);
+        virtual string exportN(ExportStrategy* es);
+
+    /**
+	 * \fn exportAsPart: \brief Charge une note par parties
+	 */
+
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
 
     protected:
     /**
@@ -86,10 +97,13 @@ namespace EasyNote
         virtual void load() = 0;
 
     /**
-	 * \fn exportAsPart: \brief Charge une note par parties
+	 * \fn save: \brief Sauvegarde physiquement une note (virtuelle pure) et ajoute une note au fichier de descripteur
 	 */
+        virtual void save() = 0;
 
-          string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+// A SUPPRIMER JUSTE POUR LES TESTS
+public:
+        void setLoad () {is_Loaded = 0;}
     };
 
     ostream& operator<<(ostream& f, const Note& n);

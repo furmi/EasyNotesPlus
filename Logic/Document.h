@@ -19,12 +19,12 @@
 *   Un document est composé de plusieurs Note (quelque que soit leur type).
 */
 
-using namespace EasyNote;
+using namespace std;
 
 // Références
 
-class ExportStrategy;
-class Note;
+//class ExportStrategy;
+//class Note;
 
 namespace EasyNote
 {
@@ -46,11 +46,12 @@ namespace EasyNote
         Document operator=(const Document&);
         virtual ~Document();
 
-    // LOAD
+    // LOAD / SAVE
         void load();
+        void save();
+
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };
 }
 
 #endif
-
-

@@ -17,12 +17,13 @@
 *   Cette classe est la sous-classe de la classe Media.
 */
 
-using namespace EasyNote;
+//using namespace EasyNote;
+using namespace std;
 
 // Références
 
-class ExportStrategy;
-class Note;
+//class ExportStrategy;
+//class Note;
 
 namespace EasyNote
 {
@@ -43,8 +44,13 @@ namespace EasyNote
         Image(const Image& i):Media(i) {}
         Image operator=(const Image&);
         virtual ~Image();
+
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+
+    //Surcharge de la fonction save() pour ajouter la Note au fichier de description du NoteManager
+    protected:
+        void save();
     };
 }
 
 #endif
-

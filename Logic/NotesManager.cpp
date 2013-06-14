@@ -113,6 +113,27 @@ namespace EasyNote
 	{
 		return factories[str]->buildNewNote(title);
 	} 
+	
+	// LOAD du NotesManager (charge les fichiers de son descripteur
+
+    void NotesManager::loadNM()
+    {
+        string fichier = "desc.enp";
+        ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
+        if (file)
+        {
+            string typeNote, title;
+            unsigned long int id;
+            while(!file.eof())  //on boucle sur tout le fichier pour récupérer toutes les informations
+            {
+                file >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
+                //appel aux factories pour créer les note en mémoire
+                cout<<"Occurence : "<<typeNote<<"  "<<id<<"  "<<title<<"\n";
+            }
+        }
+        else
+            cerr << "Impossible d'ouvrir le fichier !" << endl;
+    }
 
 }
 

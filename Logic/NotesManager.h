@@ -23,6 +23,8 @@
 #include <map>
 #include <string> // Temporaire, j'inclus Qt une fois que j'ai implémenté qqs trucs
 #include "NoteFactory.h" 
+#include <fstream>
+#include <iostream>
 
 /** \class NotesManager
 *
@@ -81,7 +83,8 @@ public:
 	*	\fn load : \brief charge la note en mémoire vive.
 	*/
 	
-	//void load();	Décommenter dès que notes ou un de ses classes filles est implémentée
+	void loadNM();  //NM pour NoteManager afin de ne pas confondre avec les load de Note & filles
+
 	
 	class NotesIterator;	// Itérateur non constant
 	class ConstNotesIterator;	// Itérateur constant

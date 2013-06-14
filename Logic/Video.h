@@ -23,8 +23,8 @@ using namespace std;
 
 // Références
 
-class ExportStrategy;
-class Note;
+//class ExportStrategy;
+//class Note;
 
 namespace EasyNote
 {
@@ -47,6 +47,12 @@ namespace EasyNote
         Video(const Video& i):Media(i) {}
         Video operator=(const Video&);
         virtual ~Video();
+
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+
+    //Surcharge de la fonction save() pour ajouter la Note au fichier de description du NoteManager
+    protected:
+        void save();
     };
 }
 

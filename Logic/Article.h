@@ -16,13 +16,13 @@
 *   Cette classe est la sous-classe de la classe Note
 */
 
-//using namespace std;
-using namespace EasyNote;
+using namespace std;
+//using namespace EasyNote;
 
 // Références
 
-class ExportStrategy;
-class Note;
+//class ExportStrategy;
+//class Note;
 
 namespace EasyNote
 {
@@ -51,13 +51,16 @@ namespace EasyNote
 
 	 // SETTERS
 
-        void setText(const string& newText) {text = newText;}
+        void setText(const string& newText) {text = newText; is_Modified = 1;}
 
-    // LOAD
+    // LOAD / SAVE
         void load();
+        void save();
 
+    // EXPORT
+
+        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };
 }
 
 #endif
-
