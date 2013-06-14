@@ -9,9 +9,10 @@
 #include "NotesManager.h"
 #include "NotesIterator.h"
 #include <QApplication>
-#include "mainwindow.h"
+#include "View/mainwindow.h"
 
 using namespace std;
+using namespace EasyNote;
 
 int main(int argc,char* argv[])
 {
@@ -44,9 +45,13 @@ int main(int argc,char* argv[])
     cout <<"d : \n";
     cout << d << endl;
 
+
+    /************* À ne surtout pas supprimer!!!! ****************/
+
     QApplication app(argc,argv);
     MainWindow mw;
-    mw.show();
-    
+    mw.setWindowTitle("EasyNote++");
+    mw.displayApp();
+
     return app.exec();
 }
