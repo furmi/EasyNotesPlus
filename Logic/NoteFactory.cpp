@@ -78,6 +78,10 @@ namespace EasyNote
 		
 		n->setId(Note::generateTimeStamp());
 		
+		// Chargement du contenu
+		
+		n->load();
+		
 		return n;
 	}
 	

@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include "Note.h"
 #include "Article.h"
 #include "Media.h"
@@ -7,21 +7,22 @@
 #include "Audio.h"
 #include "ArticleFactory.h"
 #include "NotesManager.h"
-#include "NotesIterator.h"
+#include "NotesIterator.h"*/
 #include <QApplication>
 #include "View/mainwindow.h"
+#include "View/EditorContent.h"
 
 using namespace std;
 using namespace EasyNote;
 
 int main(int argc,char* argv[])
 {
-	EasyNote::ArticleFactory af;
+    /*EasyNote::ArticleFactory af;
 	EasyNote::Article* aa = af.factory();
 	EasyNote::Article a(*aa);
 	a.setTitle("Hello bobby");
     EasyNote::Article b(a);
-    EasyNote::Article c(a);
+    EasyNote::Article c(a);*/
 	
 	
     /*a.generateTimeStamp();
@@ -34,7 +35,7 @@ int main(int argc,char* argv[])
 	 cout<<a.getText()<<"\n";*/
 	
 	
-    cout <<"a : \n";
+    /*cout <<"a : \n";
     cout << a << endl;
     a.setTitle("tire a mod");
     EasyNote::Article d = a;
@@ -43,7 +44,7 @@ int main(int argc,char* argv[])
     cout <<"c : \n";
     cout << c << endl;
     cout <<"d : \n";
-    cout << d << endl;
+    cout << d << endl;*/
 
 
     /************* À ne surtout pas supprimer!!!! ****************/
