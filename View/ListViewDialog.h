@@ -24,6 +24,7 @@ namespace EasyNote
     private:
         QListView* trash;
 
+
     };
 
 }

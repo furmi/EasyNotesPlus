@@ -1,7 +1,7 @@
-#include "View/ListViewDialog.h"
 #include <QStringList>
 #include <QStringListModel>
 #include <QDebug>
+#include "View/ListViewDialog.h"
 
 using namespace EasyNote;
 
@@ -14,11 +14,12 @@ namespace EasyNote
 
     ListViewDialog::~ListViewDialog(){}
 
+    // On utilise une QstringListModel mais il va falloir sous classer tout ça
+    // Pour avoir une NoteListModel
+
     void ListViewDialog::initTrash()
     {
         qDebug() << endl << "initTrash" << endl;
-
-        //QListView* trash = new QListView(this);
 
         QStringList trash_items;
         //numbers << "One" << "Two" << "Three" << "Four" << "Five";

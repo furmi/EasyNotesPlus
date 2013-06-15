@@ -37,6 +37,10 @@ public:
 
         QObject::connect(trash,SIGNAL(clicked()),items_manager,SLOT(openTrash()));
 
+        // Récupération du click sur le Tag Manager
+
+        QObject::connect(tag_mgr,SIGNAL(clicked()),items_manager,SLOT(openTagManager()));
+
 
     }
     virtual ~ToolDock();
