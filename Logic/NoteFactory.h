@@ -9,7 +9,7 @@
 #ifndef EasyNotePlus_julien_NoteFactory_h
 #define EasyNotePlus_julien_NoteFactory_h
 
-#include <string>
+#include <QString>
 
 using namespace std;
 
@@ -30,8 +30,8 @@ namespace EasyNote
 	
 		// Méthodes
 	
-		Note* buildNote(unsigned long int id_,const string& title);
-		Note* buildNewNote (const string& title);
+		Note* buildNote(unsigned long int id_,const QString& title);
+		Note* buildNewNote (const QString& title);
 		Note* buildNoteCopy(const Note& note);
 		
 		virtual Note* factory()=0;

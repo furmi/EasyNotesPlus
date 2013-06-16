@@ -13,9 +13,9 @@ using namespace EasyNote;
 namespace EasyNote
 {
     //FOOTER & HEADER
-    string TexExport::header(const Note* n)
+    QString TexExport::header(const Note* n)
     {
-        string es = "";
+        QString es = "";
         es.append("\\documentclass[a4paper,11pt]{report}\n");
         es.append("\\usepackage{graphicx}\n");
         es.append("\\usepackage[french]{babel}\n");
@@ -25,15 +25,15 @@ namespace EasyNote
         return es;
     }
 
-    string TexExport::footer(const Note* n)
+    QString TexExport::footer(const Note* n)
     {
         return "\\end{document}";
     }
 
     //EXPORT
-    /*string TexExport::exportNote(const Note* n, unsigned int titleLevel)
+    /*QString TexExport::exportNote(const Note* n, unsigned int titleLevel)
     {
-        string es = "";
+        QString es = "";
         es.append(header(n));
         es.append("\\chapter{");
         es.append(n->getTitle());
@@ -44,31 +44,31 @@ namespace EasyNote
         return es;
     }*/
 
-    string TexExport::exportNote(const Document* d)
+    QString TexExport::exportNote(const Document* d)
     {
-        string es = "";  //retour de la méthode
+        QString es = "";  //retour de la méthode
         list<Note*>::const_iterator it;
         for(it = d->notes.begin(); it != d->notes.end(); it++)
             //es.append(exportNote(*it,1));
         return es;
     }
 
-    string TexExport::exportNote(const Article* article, unsigned int titleLevel)
+    QString TexExport::exportNote(const Article* article, unsigned int titleLevel)
     {
         return ("\\paragraph{"+article->getTitle()+"}\n"+article->getText()+"\n");
     }
 
-    string TexExport::exportNote(const Audio* audio, unsigned int titleLevel)
+    QString TexExport::exportNote(const Audio* audio, unsigned int titleLevel)
     {
         return ("\\paragraph{"+audio->getTitle()+"}\n"+audio->getPath()+"\n"+"\\paragraph\n"+audio->getDescription()+"\n");
     }
 
-    string TexExport::exportNote(const Image* image, unsigned int titleLevel)
+    QString TexExport::exportNote(const Image* image, unsigned int titleLevel)
     {
         return ("\\paragraph{"+image->getTitle()+"}\n"+"\\begin{center}\n\\includegraphics{"+image->getPath()+"}\n\\paragraph\n"+image->getDescription()+"\n");
     }
 
-    string TexExport::exportNote(const Video* video, unsigned int titleLevel)
+    QString TexExport::exportNote(const Video* video, unsigned int titleLevel)
     {
         return ("\\paragraph{"+video->getTitle()+"}\n"+video->getPath()+"\n"+"\\section{niveau2}\n"+video->getDescription()+"\n");
     }

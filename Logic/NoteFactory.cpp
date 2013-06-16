@@ -7,7 +7,7 @@
 //
 
 #include "NoteFactory.h"
-#include <string>
+#include <QString>
 #include "Note.h"
 #include "NotesManager.h"
 
@@ -41,7 +41,7 @@ namespace EasyNote
 		
 	}
 
-	Note* NoteFactory::buildNote(unsigned long int id_,const string& title)
+	Note* NoteFactory::buildNote(unsigned long int id_,const QString& title)
 	{
 		// Création de la note
 		
@@ -57,7 +57,7 @@ namespace EasyNote
 		return note;
 	}
 	
-	Note* NoteFactory::buildNewNote (const string& title)
+	Note* NoteFactory::buildNewNote (const QString& title)
 	{
 		// Création de la note
 		

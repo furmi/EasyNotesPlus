@@ -12,7 +12,7 @@
 #include "NoteFactory.h"
 
 using namespace std;
-//class string;
+//class QString;
 
 namespace EasyNote
 {

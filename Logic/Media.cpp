@@ -21,18 +21,21 @@ namespace EasyNote
     {
         if (!this->isLoaded())   //permet de tester si la note est déjà chargée
         {
-            //conversion de l'ID en string
+        //conversion de l'ID en string
             std::ostringstream oss;
             oss << this->getId();
-            std::string id = oss.str();
-
-            string fichier = (id+".enp");
-            ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
-            if (file)
+            QString id = oss.str();
+		//Chargement de l'ensemble des attributs de Media à partir du fichier
+            QString nom = (id+".enp");
+            QFile fichier(nom);
+            if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
             {
-                string title, desc, path;
-                file >> title >> desc >> path;  //permet de lire les éléments à partir du fichier
-                file.close();
+                QString title, desc, path;
+                QTextStream flux(&fichier);
+                title = flux.readLine();
+				desc = flux.readLine();
+				path = flux.readLine();
+                fichier.close();
                 //écriture des éléments dans l'objet
                 this->setDescription(desc);
                 this->setPath(path);
@@ -47,24 +50,24 @@ namespace EasyNote
     void Media::save()
     {
     //conversion de l'ID en string
-        std::ostringstream oss;
-        oss << this->getId();
-        std::string id = oss.str();
+		std::ostringstream oss;
+		oss << this->getId();
+		QString id = oss.str();
 
     //sauvegarde du fichier qui correspond à la note
         if(this->isModified())  //permet de tester si la note a été modifiée
         {
-            string fichier = (id+".enp");
-            ofstream file(fichier.c_str(), ios::out | ios::trunc);  //ouverture en écriture, fichier vierge
-            if (file)
+            QString nom = (id+".enp");
+            QFile fichier(nom);
+            if (fichier.open(QIODevice::WriteOnly | QIODevice::Truncate))
             {
-                file << this->getTitle() << "\n" << this->getDescription() << "\n" << this->getPath() << endl; //permet d'écrire dans un fichier
-                file.close();
+				QTextStream flux(&fichier);
+                flux << this->getTitle() << "\n" << this->getDesc() << "\n" << this->getPath() << endl; //permet d'écrire dans un fichier
+                fichier.close();
                 this->is_Modified = 0;  //objet sauvegardé donc il n'est plus modifié
             }
             else
                 cerr << "Impossible d'ouvrir le fichier !" << endl;
-        }
     /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
     /* La méthode sera surchagée dans les classes filles de Media afin de pouvoir
     avoir une méthode adéquate pour l'insertion de la note dans le fichier de description

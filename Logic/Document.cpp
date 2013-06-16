@@ -44,9 +44,9 @@ void Document::load()
         }
     }
 
-    string Document::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
+    QString Document::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
     {
-        string exp = "";
+        QString exp = "";
         cout<<"arrivé dans ExportAsPart Document\n";
         list<Note*>::iterator it;
         for(it = this->notes.begin(); it != this->notes.end(); it++)

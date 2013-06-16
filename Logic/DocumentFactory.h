@@ -10,7 +10,7 @@
 #define EasyNotePlus_julien_DocumentFactory_h
 
 #include "NoteFactory.h"
-#include <string>
+#include <QString>
 
 using namespace std;
 

@@ -42,7 +42,7 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
         Document():Note(),notes(0) {}
-        Document(const string& titre):Note(titre), notes(0) {}
+        Document(const QString& titre):Note(titre), notes(0) {}
         Document(const Document& d):Note(d), notes(d.notes) {}
         Document operator=(const Document&);
         virtual ~Document();
@@ -52,7 +52,7 @@ namespace EasyNote
 	virtual void load();
         virtual void save();
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };
 }
 

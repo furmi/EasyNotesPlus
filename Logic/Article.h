@@ -34,7 +34,7 @@ namespace EasyNote
     {
     // Attributes
 
-	string text;
+	QString text;
 
     //METHODES
 
@@ -42,17 +42,17 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
         Article():Note(),text("") {}
-        Article(const string& titre,const string& texte):Note(titre), text(texte) {}
+        Article(const QString& titre,const QString& texte):Note(titre), text(texte) {}
         Article(const Article& a):Note(a), text(a.getText()) {}
         Article operator=(const Article&);
         virtual ~Article();
 
 	 // GETTERS
-        const string& getText() const {return text;}
+        const QString& getText() const {return text;}
 
 	 // SETTERS
 
-        void setText(const string& newText) {text = newText; is_Modified = 1;}
+        void setText(const QString& newText) {text = newText; is_Modified = 1;}
 
     private:
         //friend class NotesManager;
@@ -62,7 +62,7 @@ namespace EasyNote
 
     // EXPORT
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };
 }
 

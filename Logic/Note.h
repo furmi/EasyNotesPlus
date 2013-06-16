@@ -8,7 +8,7 @@
 
 #ifndef EasyNotePlus_thomas_Note_h
 #define EasyNotePlus_thomas_Note_h
-#include <string>
+#include <QString>
 #include <iostream>
 #include <ctime>
 #include <sys/time.h>
@@ -44,7 +44,7 @@ namespace EasyNote
     {
     // ATTRIBUTES
     protected:
-		string title;
+		QString title;
         bool is_Loaded;
         bool is_Modified;
     private:
@@ -61,8 +61,8 @@ namespace EasyNote
     // CONSTRUCTEURS / DESTRUCTEURS
                 //de base l'attribut isModified est à 1 pour prendre en charge la sauvegarde à la création
         Note():title(""),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-        Note(const   string& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-		Note(const   string& titre,unsigned long int id_):title(titre),id(id_){}
+        Note(const   QString& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+		Note(const   QString& titre,unsigned long int id_):title(titre),id(id_){}
 
 		Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
         Note& operator=(const Note&);
@@ -71,26 +71,26 @@ namespace EasyNote
 
 	 // GETTERS
         const unsigned long int getId() const {return id;}
-        const   string& getTitle() const {return title;}
+        const   QString& getTitle() const {return title;}
         const bool isModified() const {return is_Modified;}
         const bool isLoaded() const {return is_Loaded;}
 
 	 // SETTERS
 
-        void setTitle(const   string& newTitle) {title = newTitle; is_Modified = 1;}
+        void setTitle(const   QString& newTitle) {title = newTitle; is_Modified = 1;}
 		void setId(unsigned long int id_){id = id_; is_Modified = 1;}
 
         //Export
     /**
 	 * \fn export: \brief Exporte une note.
 	 */
-        virtual string exportN(ExportStrategy* es);
+        virtual QString exportN(ExportStrategy* es);
 
     /**
 	 * \fn exportAsPart: \brief Charge une note par parties
 	 */
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
 
     protected:
     /**

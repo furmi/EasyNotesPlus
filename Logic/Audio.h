@@ -40,13 +40,13 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
         Audio() {}
-        Audio(const string& titre, const string& desc):Media(titre,desc) {}
-        Audio(const string& titre, const string& desc, const string& chemin):Media(titre,desc,chemin) {}
+        Audio(const QString& titre, const QString& desc):Media(titre,desc) {}
+        Audio(const QString& titre, const QString& desc, const QString& chemin):Media(titre,desc,chemin) {}
         Audio(const Audio& i):Media(i) {}
         Audio operator=(const Audio&);
         virtual ~Audio();
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel);
 
     //Surcharge de la fonction save() pour ajouter la Note au fichier de description du NoteManager
     protected:

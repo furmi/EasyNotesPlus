@@ -45,19 +45,19 @@ namespace EasyNote
         virtual ~ExportStrategy();
 
     //EXPORT
-        //virtual string exportNoteN(const Note* n, unsigned int titleLevel);  //permet d'exporter une note en entier
-        virtual string exportNote(const Document* d) = 0;   //permet d'exporter un document
-        virtual string exportNote(const Article* n, unsigned int titleLevel) = 0;  //permet d'exporter un article
-        virtual string exportNote(const Image* n, unsigned int titleLevel) = 0;  //permet d'exporter une image
-        virtual string exportNote(const Audio* n, unsigned int titleLevel) = 0;  //permet d'exporter un son
-        virtual string exportNote(const Video* n, unsigned int titleLevel) = 0;  //permet d'exporter une vidéo
+        //virtual QString exportNoteN(const Note* n, unsigned int titleLevel);  //permet d'exporter une note en entier
+        virtual QString exportNote(const Document* d) = 0;   //permet d'exporter un document
+        virtual QString exportNote(const Article* n, unsigned int titleLevel) = 0;  //permet d'exporter un article
+        virtual QString exportNote(const Image* n, unsigned int titleLevel) = 0;  //permet d'exporter une image
+        virtual QString exportNote(const Audio* n, unsigned int titleLevel) = 0;  //permet d'exporter un son
+        virtual QString exportNote(const Video* n, unsigned int titleLevel) = 0;  //permet d'exporter une vidéo
 
     //FOOTER & HEADER
-        virtual string header(const Note* n) = 0;
-        virtual string footer(const Note* n) = 0;
+        virtual QString header(const Note* n) = 0;
+        virtual QString footer(const Note* n) = 0;
 
     //GETTER
-        static map<string, ExportStrategy*> getStrategies();
+        static map<QString, ExportStrategy*> getStrategies();
     };
 }
 

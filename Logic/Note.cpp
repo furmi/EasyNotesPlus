@@ -45,9 +45,9 @@ namespace EasyNote
         return timeSys;
     }
 
-    string Note::exportN(ExportStrategy* es)
+    QString Note::exportN(ExportStrategy* es)
     {
-        string exp = "";
+        QString exp = "";
         exp.append(es->header(this));
         exp.append(this->exportAsPart(es,1));
         exp.append(es->footer(this));

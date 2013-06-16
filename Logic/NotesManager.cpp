@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <string>
+#include <QString>
 #include "NotesManager.h"
 #include "NotesIterator.h"
 #include "ConstNotesIterator.h"
@@ -109,7 +109,7 @@ namespace EasyNote
 	
 	// Méthode d'accès à factories
 	
-	Note* NotesManager::getNewNote (string str,string title)
+	Note* NotesManager::getNewNote (QString str,QString title)
 	{
 		return factories[str]->buildNewNote(title);
 	} 
@@ -118,15 +118,15 @@ namespace EasyNote
 
     void NotesManager::loadNM()
     {
-        string fichier = "desc.enp";
-        ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
-        if (file)
-        {
-            string typeNote, title;
+        QString nom = ("desc.enp");
+		QFile fichier(nom);
+		if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+            QString typeNote, title;
             unsigned long int id;
-            while(!file.eof())  //on boucle sur tout le fichier pour récupérer toutes les informations
+            QTextStream flux(&fileDesc);
+            while(!flux.atEnd())  //on boucle sur tout le fichier pour récupérer toutes les informations
             {
-                file >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
+                flux >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
                 //appel aux factories pour créer les note en mémoire
                 if (typeNote=="")
                     cout<<"vide\n";
