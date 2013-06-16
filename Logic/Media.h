@@ -22,7 +22,7 @@
 using namespace std;
 
 // Références
-
+friend class NotesManager;
 class ExportStrategy;
 
 namespace EasyNote
@@ -47,7 +47,7 @@ namespace EasyNote
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Media():Note(),description(""), path("") {}
+        Media():description(""), path("") {}
         Media(const string& titre, const string& desc):Note(titre), description(desc), path("") {}
         Media(const  string& titre, const  string& desc, const  string& chemin):Note(titre), description(desc), path(chemin) {}
         Media(const Media& m):Note(m), description(m.getDescription()), path(m.getPath()) {}

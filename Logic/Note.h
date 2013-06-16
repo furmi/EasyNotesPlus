@@ -29,6 +29,8 @@ using namespace std;
 
 // Références
 
+friend class NotesManager;
+
 
 
 namespace EasyNote
@@ -100,10 +102,6 @@ namespace EasyNote
 	 * \fn save: \brief Sauvegarde physiquement une note (virtuelle pure) et ajoute une note au fichier de descripteur
 	 */
         virtual void save() = 0;
-
-// A SUPPRIMER JUSTE POUR LES TESTS
-public:
-        void setLoad () {is_Loaded = 0;}
     };
 
     ostream& operator<<(ostream& f, const Note& n);

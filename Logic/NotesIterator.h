@@ -39,7 +39,7 @@ namespace EasyNote
 		// Méthodes d'accès aux données
 		
 		const string getTitle () const; // À redéfinir
-		unsigned int getId() const; // À redéfinir
+		unsigned long int getId() const; // À redéfinir
 	
 	private:
 		friend class NotesManager;

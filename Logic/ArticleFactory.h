@@ -24,7 +24,7 @@ namespace EasyNote
 	{
 		
 	public:
-		virtual Article* factory();
+		virtual Note* factory();
 		
 		// Destructeur
 		

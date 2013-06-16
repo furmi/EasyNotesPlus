@@ -21,6 +21,7 @@
 using namespace std;
 
 // Références
+friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;

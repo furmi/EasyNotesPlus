@@ -22,6 +22,7 @@
 using namespace std;
 
 // Références
+friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -47,8 +48,9 @@ namespace EasyNote
         virtual ~Document();
 
     // LOAD / SAVE
-        void load();
-        void save();
+	private:
+	virtual void load();
+        virtual void save();
 
         virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
     };

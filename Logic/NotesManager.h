@@ -99,6 +99,9 @@ public:
 	// Méthodes d'accès à la factory
 	
 	Note* getNewNote (string str,string title);
+	
+	void addNote(Note* n) {cout<<"addNote\n"; notes.insert(n);} //permet d'ajouter une note
+	void loadNote(Note* n);  //permet de charger une note
 		
 private:
 	// MÉTHODES PRIVÉES

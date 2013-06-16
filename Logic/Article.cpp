@@ -7,6 +7,7 @@
 //
 
 #include "Article.h"
+#include "ExportStrategy.h"
 
 using namespace EasyNote;
 

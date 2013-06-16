@@ -39,22 +39,22 @@ namespace EasyNote
 	{
 		// Construction des diverses factories
 		
-		factories["DocumentFactory"] = new DocumentFactory;
-		factories["ArticleFactory"] = new ArticleFactory;
-		factories["VideoFactory"] = new VideoFactory;
-		factories["ImageFactory"] = new ImageFactory;
-		factories["AudioFactory"] = new AudioFactory;
+		factories["Document"] = new DocumentFactory;
+		factories["Article"] = new ArticleFactory;
+		factories["Video"] = new VideoFactory;
+		factories["Image"] = new ImageFactory;
+		factories["Audio"] = new AudioFactory;
 	}
 
 	NotesManager::~NotesManager ()
 	{
 		// Destruction des factories
 		
-		delete factories["DocumentFactory"];
-		delete factories["ArticleFactory"];
-		delete factories["VideoFactory"];
-		delete factories["ImageFactory"];
-		delete factories["AudioFactory"];
+		delete factories["Document"];
+		delete factories["Article"];
+		delete factories["Video"];
+		delete factories["Image"];
+		delete factories["Audio"];
 		
 		// Destruction du Note manager
 		
@@ -128,11 +128,20 @@ namespace EasyNote
             {
                 file >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
                 //appel aux factories pour créer les note en mémoire
+                if (typeNote=="")
+                    cout<<"vide\n";
+                else
+                    addNote(factories[typeNote]->buildNote(id, title));
                 cout<<"Occurence : "<<typeNote<<"  "<<id<<"  "<<title<<"\n";
             }
         }
         else
             cerr << "Impossible d'ouvrir le fichier !" << endl;
+    }
+    
+    void NotesManager::loadNote(Note* n)
+    {
+        n->load();
     }
 
 }

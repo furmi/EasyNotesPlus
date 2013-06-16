@@ -20,6 +20,7 @@ using namespace std;
 //using namespace EasyNote;
 
 // Références
+friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -53,9 +54,11 @@ namespace EasyNote
 
         void setText(const string& newText) {text = newText; is_Modified = 1;}
 
+    private:
+        //friend class NotesManager;
     // LOAD / SAVE
-        void load();
-        void save();
+        virtual void load();
+        virtual void save();
 
     // EXPORT
 
