@@ -12,8 +12,8 @@ class EditorContent:public QWidget
 {
    Q_OBJECT
 public:
-    EditorContent(QWidget* =0):
-        title(new QLineEdit(this)),l_title(new QLabel("Titre",this)),
+    EditorContent(QWidget* parent=0):
+        QWidget(parent),title(new QLineEdit(this)),l_title(new QLabel("Titre",this)),
         content(new QTextEdit(this)),layout(new QGridLayout(this))
     {
         // Ajoute les Widget composites au layout

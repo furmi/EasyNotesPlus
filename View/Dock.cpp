@@ -2,8 +2,8 @@
 
 using namespace EasyNote;
 
-Dock::Dock(QWidget*):
-    tooldock(new ToolDock(this)),l_view(new QListView(this)),layout(new QVBoxLayout(this))
+Dock::Dock(QWidget* parent):
+    QWidget(parent),tooldock(new ToolDock(this)),l_view(new QListView(this)),layout(new QVBoxLayout(this))
 {
     // Bon alors la dedans y'a encore des trucs à faire parce que à la fin du constructeur on perd le contenu de la
     // liste. Il faut sûrement rajouter modèle en attribut et peut être aussi list_items
