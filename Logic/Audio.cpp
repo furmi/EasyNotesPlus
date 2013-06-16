@@ -35,6 +35,7 @@ namespace EasyNote
                 QString typeDoc, title;
                 unsigned long int idfile;
                 QTextStream flux(&fileDesc);
+                flux.setCodec("UTF-8");
                 while(!flux.atEnd())  //on parcourt le fichier afin de voir si l'ID existe déjà
                 {
                     flux >> typeDoc >> idfile >> title;
@@ -59,6 +60,7 @@ namespace EasyNote
                 //on ouvre le fichierDesc en écriture et on ajoute la note en dernière position
                 QFile fileDesc(fichierDesc);
                 QTextStream flux(&fileDesc);
+                flux.setCodec("UTF-8");
 				if (fileDesc.open(QIODevice::WriteOnly | QIODevice::Append))
                 {
 					

@@ -131,7 +131,7 @@ namespace EasyNote
 
         ittags = tags.begin();
         param.insert(*ittags);
-        cout<<"Parametre (1er tag) "<<(*(param.begin()))<<endl;
+        //cout<<"Parametre (1er tag) "<<(*(param.begin()))<<endl;
         old = this->searchNote(param);  //liste des note qui ont le premier tag
         if (tags.size() == 1)
             return old; //si on a qu'un seul tag, la méthode renvoit la liste du tag

@@ -122,7 +122,7 @@ namespace EasyNote
     {
         QString nom = ("desc.enp");
 		QFile fichier(nom);
-		if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+        if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QString typeNote, title;
             unsigned long int id;
@@ -134,8 +134,10 @@ namespace EasyNote
                 if (typeNote=="")
                     cout<<"vide\n";
                 else
+                {
                     addNote(factories[typeNote]->buildNote(id, title));
-                cout<<"Occurence : "<<typeNote<<"  "<<id<<"  "<<title<<"\n";
+                    qDebug()<<"Occurence : "<<typeNote<<"  "<<id<<"  "<<title<<"\n";
+                }
             }
         }
         else

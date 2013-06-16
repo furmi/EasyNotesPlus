@@ -54,7 +54,7 @@ namespace EasyNote
 
         void setText(const QString& newText) {text = newText; is_Modified = 1;}
 
-    private:
+    public:
         //friend class NotesManager;
     // LOAD / SAVE
         virtual void load();

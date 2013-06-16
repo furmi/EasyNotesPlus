@@ -20,7 +20,7 @@ namespace EasyNote
 	ostream& operator<<(ostream& f, const Note& n)
     {
         f<<"ID : "<<n.getId()<<"\n";
-        f<<"Titre : "<<n.getTitle()<<"\n";
+        //f<<"Titre : "<<n.getTitle()<<"\n";
         return f;
     }
 

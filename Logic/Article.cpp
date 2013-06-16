@@ -19,10 +19,11 @@ namespace EasyNote
 {
     void Article::load()
     {
+        qDebug()<<"dans le load\n";
         if (!this->isLoaded())   //permet de tester si la note est déjà chargée
         {
         //conversion de l'ID en QString
-
+            qDebug()<<"dans le if\n";
             QString id = QString::number(this->getId());
 			
 			QString nom = (id+".enp");
@@ -30,6 +31,7 @@ namespace EasyNote
             //ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
             if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
             {
+                qDebug()<<"dans le fichier\n";
 				QTextStream flux(&fichier);
                 QString title, text;
 				title = flux.readLine();
@@ -51,15 +53,18 @@ namespace EasyNote
 
         QString id = QString::number(this->getId());
 
+        qDebug()<<"id : "<<id<<endl;
+
     //sauvegarde du fichier qui correspond à la note
         if(this->isModified())  //permet de tester si la note a été modifiée
         {
             QString nom = (id+".enp");
+            qDebug()<<"nom fichier : "<<nom<<endl;
             QFile fichier(nom);
             if (fichier.open(QIODevice::WriteOnly | QIODevice::Truncate))
             {
 				QTextStream flux(&fichier);
-                cout<<"dans file\n";
+                flux.setCodec("UTF-8");
                 flux << this->getTitle() << "\n" << this->getText() << endl; //permet d'écrire dans un fichier
                 fichier.close();
                 this->is_Modified = 0;  //objet sauvegardé donc il n'est plus modifié
@@ -76,16 +81,20 @@ namespace EasyNote
                 QString typeDoc, title;
                 unsigned long int idfile;
                 QTextStream flux(&fileDesc);
-                while(!flux.atEnd())  //on parcourt le fichier afin de voir si l'ID existe déjà
+                flux.setCodec("UTF-8");
+                qDebug()<<"avant while"<<endl;
+                qDebug()<<"flux"<<flux.readAll()<<endl;
+                while(flux.readLine() != "")  //on parcourt le fichier afin de voir si l'ID existe déjà
                 {
+                    qDebug()<<"dans while"<<endl;
                     flux >> typeDoc >> idfile >> title;
                     if (idfile == this->getId())    //l'ID existe, il faut vérifier que le titre n'a pas été changé
                     {
                         /*if (title != this->getTitle())  //le titre a été changé, il faut le mettre à jour
                         {
 
-                        }
-                        */  //à implémenter si on veut que le titre des notes soit modifiable
+                        }*/
+                          //à implémenter si on veut que le titre des notes soit modifiable
                         existe = 1; //indique que la note est référencée
                         break;  //pour sortir de la boucle
                     }
@@ -97,12 +106,13 @@ namespace EasyNote
         //si la note n'est pas référencée dans le fichier de description, on l'ajoute
             if(!existe) //si la note n'est pas référencée dans le fichier
             {
+                qDebug()<<"dans le existe"<<endl;
                 //on ouvre le fichierDesc en écriture et on ajoute la note en dernière position
                 QFile fileDesc(fichierDesc);
                 QTextStream flux(&fileDesc);
+                flux.setCodec("UTF-8");
 				if (fileDesc.open(QIODevice::WriteOnly | QIODevice::Append))
                 {
-					
                     flux << "Article" << " " << this->getId() << " " << this->getTitle() << endl; //permet d'écrire dans un fichier
                     fileDesc.close();
                 }
@@ -122,7 +132,7 @@ namespace EasyNote
     ostream& operator<<(ostream& f, const Article& a)
     {
         f<<a;
-        f<<"Texte : "<<a.getText()<<"\n";
+        //f<<"Texte : "<<a.getText()<<"\n";
         return f;
     }
 

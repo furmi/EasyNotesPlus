@@ -34,6 +34,7 @@ namespace EasyNote
             {
                 QString title, desc, path;
                 QTextStream flux(&fichier);
+                flux.setCodec("UTF-8");
                 title = flux.readLine();
 				desc = flux.readLine();
 				path = flux.readLine();
@@ -63,6 +64,7 @@ namespace EasyNote
             if (fichier.open(QIODevice::WriteOnly | QIODevice::Truncate))
             {
 				QTextStream flux(&fichier);
+                flux.setCodec("UTF-8");
                 flux << this->getTitle() << "\n" << this->getDescription() << "\n" << this->getPath() << endl; //permet d'écrire dans un fichier
                 fichier.close();
                 this->is_Modified = 0;  //objet sauvegardé donc il n'est plus modifié

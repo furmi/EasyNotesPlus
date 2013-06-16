@@ -18,6 +18,8 @@
 #include <sstream>
 //#include "ExportStrategy.h"
 
+#include <QDebug>
+
 /** \class Note
 *
 *   Classe abstraite qui donne la structure de base de l'ensemble des objets à gérer.
@@ -57,11 +59,11 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
                 //de base l'attribut isModified est à 1 pour prendre en charge la sauvegarde à la création
-        Note():title(""),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
-        Note(const   QString& titre):title(titre),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note():title(""),is_Loaded(0),is_Modified(1),id(generateTimeStamp()) {}
+        Note(const   QString& titre):title(titre),is_Loaded(0),is_Modified(1),id(generateTimeStamp()) {}
 		Note(const   QString& titre,unsigned long int id_):title(titre),id(id_){}
 
-		Note(const Note& n):title(n.getTitle()),is_Loaded(1),is_Modified(1),id(generateTimeStamp()) {}
+        Note(const Note& n):title(n.getTitle()),is_Loaded(0),is_Modified(1),id(generateTimeStamp()) {}
         Note& operator=(const Note&);
 
         virtual ~Note();
@@ -89,7 +91,7 @@ namespace EasyNote
 
         virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
 
-    protected:
+    public:
     /**
 	 * \fn load: \brief Charge une note (virtuelle pure)
 	 */
