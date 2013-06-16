@@ -13,9 +13,9 @@ using namespace EasyNote;
 namespace EasyNote
 {
     //FOOTER & HEADER
-    string HTMLExport::header(const Note* n)
+    QString HTMLExport::header(const Note* n)
     {
-        string es = "";
+        QString es = "";
         es.append("<html>\n");
         es.append("<head>\n");
         es.append("<meta charset=""utf-8"">\n");
@@ -24,15 +24,15 @@ namespace EasyNote
         return es;
     }
 
-    string HTMLExport::footer(const Note* n)
+    QString HTMLExport::footer(const Note* n)
     {
         return "</body>\n</html>";
     }
 
     //EXPORT
-    /*string HTMLExport::exportNote(const Note* n, unsigned int titleLevel)
+    /*QString HTMLExport::exportNote(const Note* n, unsigned int titleLevel)
     {
-        string es = "";
+        QString es = "";
         es.append(header(n));
         es.append("\\chapter{");
         es.append(n->getTitle());
@@ -43,23 +43,23 @@ namespace EasyNote
         return es;
     }*/
 
-    string HTMLExport::exportNote(const Document* d)
+    QString HTMLExport::exportNote(const Document* d)
     {
-        string es = "";  //retour de la méthode
+        QString es = "";  //retour de la méthode
         list<Note*>::const_iterator it;
         for(it = d->notes.begin(); it != d->notes.end(); it++)
             //es.append(exportNote(*it,1));
         return es;
     }
 
-    string HTMLExport::exportNote(const Article* article, unsigned int titleLevel)
+    QString HTMLExport::exportNote(const Article* article, unsigned int titleLevel)
     {
-        //conversion de titleLevel en string
+        //conversion de titleLevel en QString
         std::ostringstream oss;
         oss << titleLevel;
-        std::string titre = oss.str();
+        QString titre = oss.str();
 
-        string es = "";
+        QString es = "";
         //balise pour le titre
         es.append("<h"+titre+">\n");
         //ajout du titre
@@ -71,14 +71,14 @@ namespace EasyNote
         return es;
     }
 
-    string HTMLExport::exportNote(const Audio* audio, unsigned int titleLevel)
+    QString HTMLExport::exportNote(const Audio* audio, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
         std::ostringstream oss;
         oss << titleLevel;
-        std::string titre = oss.str();
+        QString titre = oss.str();
 
-        string es = "";
+        QString es = "";
         //balise pour le titre
         es.append("<h"+titre+">\n");
         //ajout du titre
@@ -94,14 +94,14 @@ namespace EasyNote
         return es;
     }
 
-    string HTMLExport::exportNote(const Image* image, unsigned int titleLevel)
+    QString HTMLExport::exportNote(const Image* image, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
         std::ostringstream oss;
         oss << titleLevel;
-        std::string titre = oss.str();
+        QString titre = oss.str();
 
-        string es = "";
+        QString es = "";
         //balise pour le titre
         es.append("<h"+titre+">\n");
         //ajout du titre
@@ -115,14 +115,14 @@ namespace EasyNote
         return es;
     }
 
-    string HTMLExport::exportNote(const Video* video, unsigned int titleLevel)
+    QString HTMLExport::exportNote(const Video* video, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
         std::ostringstream oss;
         oss << titleLevel;
-        std::string titre = oss.str();
+        QString titre = oss.str();
 
-        string es = "";
+        QString es = "";
         //balise pour le titre
         es.append("<h"+titre+">");
         //ajout du titre

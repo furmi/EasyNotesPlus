@@ -10,7 +10,7 @@
 #define EasyNotePlus_julien_ConstNotesIterator_h
 #include "NotesManager.h"
 #include <set>
-#include <string>
+#include <QString>
 
 using namespace EasyNote;
 
@@ -38,7 +38,7 @@ namespace EasyNote
 		
 		// Méthodes d'accès aux données
 		
-		const string getTitle () const; // À redéfinir
+		const QString getTitle () const; // À redéfinir
 		unsigned int getId() const; // À redéfinir
 		
 		

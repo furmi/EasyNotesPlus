@@ -18,9 +18,9 @@ namespace EasyNote
 {
     ExportStrategy::~ExportStrategy() {}
 
-    map<string, ExportStrategy*> ExportStrategy::getStrategies()
+    map<QString, ExportStrategy*> ExportStrategy::getStrategies()
     {
-        map<string, ExportStrategy*> strat;
+        map<QString, ExportStrategy*> strat;
 
         //création des différentes classes d'export
         strat["HTMLExport"] = new HTMLExport;

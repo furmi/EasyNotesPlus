@@ -9,7 +9,7 @@
 #ifndef EasyNotePlus_thomas_Video_h
 #define EasyNotePlus_thomas_Video_h
 
-#include <string>
+#include <QString>
 #include "Media.h"
 
 /** \class Video
@@ -22,6 +22,7 @@ using namespace std;
 
 
 // Références
+friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -42,13 +43,13 @@ namespace EasyNote
 
     // CONSTRUCTEURS / DESTRUCTEURS
         Video() {}
-        Video(const  string& titre, const  string& desc):Media(titre,desc) {}
-        Video(const  string& titre, const  string& desc, const  string& chemin):Media(titre,desc,chemin) {}
+        Video(const  QString& titre, const  QString& desc):Media(titre,desc) {}
+        Video(const  QString& titre, const  QString& desc, const  QString& chemin):Media(titre,desc,chemin) {}
         Video(const Video& i):Media(i) {}
         Video operator=(const Video&);
         virtual ~Video();
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel);
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel);
 
     //Surcharge de la fonction save() pour ajouter la Note au fichier de description du NoteManager
     protected:

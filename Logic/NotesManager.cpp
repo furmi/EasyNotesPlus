@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
-#include <string>
+#include <QString>
 #include "NotesManager.h"
 #include "NotesIterator.h"
 #include "ConstNotesIterator.h"
@@ -39,22 +39,22 @@ namespace EasyNote
 	{
 		// Construction des diverses factories
 		
-		factories["DocumentFactory"] = new DocumentFactory;
-		factories["ArticleFactory"] = new ArticleFactory;
-		factories["VideoFactory"] = new VideoFactory;
-		factories["ImageFactory"] = new ImageFactory;
-		factories["AudioFactory"] = new AudioFactory;
+		factories["Document"] = new DocumentFactory;
+		factories["Article"] = new ArticleFactory;
+		factories["Video"] = new VideoFactory;
+		factories["Image"] = new ImageFactory;
+		factories["Audio"] = new AudioFactory;
 	}
 
 	NotesManager::~NotesManager ()
 	{
 		// Destruction des factories
 		
-		delete factories["DocumentFactory"];
-		delete factories["ArticleFactory"];
-		delete factories["VideoFactory"];
-		delete factories["ImageFactory"];
-		delete factories["AudioFactory"];
+		delete factories["Document"];
+		delete factories["Article"];
+		delete factories["Video"];
+		delete factories["Image"];
+		delete factories["Audio"];
 		
 		// Destruction du Note manager
 		
@@ -109,7 +109,7 @@ namespace EasyNote
 	
 	// Méthode d'accès à factories
 	
-	Note* NotesManager::getNewNote (string str,string title)
+	Note* NotesManager::getNewNote (QString str,QString title)
 	{
 		return factories[str]->buildNewNote(title);
 	} 
@@ -118,21 +118,30 @@ namespace EasyNote
 
     void NotesManager::loadNM()
     {
-        string fichier = "desc.enp";
-        ifstream file(fichier.c_str(), ios::in);  //ouverture du fichier en lecture
-        if (file)
-        {
-            string typeNote, title;
+        QString nom = ("desc.enp");
+		QFile fichier(nom);
+		if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+            QString typeNote, title;
             unsigned long int id;
-            while(!file.eof())  //on boucle sur tout le fichier pour récupérer toutes les informations
+            QTextStream flux(&fileDesc);
+            while(!flux.atEnd())  //on boucle sur tout le fichier pour récupérer toutes les informations
             {
-                file >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
+                flux >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)
                 //appel aux factories pour créer les note en mémoire
+                if (typeNote=="")
+                    cout<<"vide\n";
+                else
+                    addNote(factories[typeNote]->buildNote(id, title));
                 cout<<"Occurence : "<<typeNote<<"  "<<id<<"  "<<title<<"\n";
             }
         }
         else
             cerr << "Impossible d'ouvrir le fichier !" << endl;
+    }
+    
+    void NotesManager::loadNote(Note* n)
+    {
+        n->load();
     }
 
 }

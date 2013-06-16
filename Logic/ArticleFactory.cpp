@@ -20,7 +20,7 @@ namespace EasyNote
 		
 	}
 	
-	Article* ArticleFactory::factory()
+	Note* ArticleFactory::factory()
 	{
 		return new Article;
 	}

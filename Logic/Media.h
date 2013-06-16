@@ -10,7 +10,7 @@
 #define EasyNotePlus_thomas_Media_h
 
 #include "Note.h"
-#include <string>
+#include <QString>
 
 /** \class Media
 *
@@ -22,7 +22,7 @@
 using namespace std;
 
 // Références
-
+friend class NotesManager;
 class ExportStrategy;
 
 namespace EasyNote
@@ -37,33 +37,33 @@ namespace EasyNote
         /**
         *	\var description: \brief attribut contenant la description du média
         */
-		string description;
+		QString description;
         /**
         *	\var path: \brief attribut contenant le chemin du média
         */
-        string path;
+        QString path;
 
     //METHODES
     public:
 
     // CONSTRUCTEURS / DESTRUCTEURS
-        Media():Note(),description(""), path("") {}
-        Media(const string& titre, const string& desc):Note(titre), description(desc), path("") {}
-        Media(const  string& titre, const  string& desc, const  string& chemin):Note(titre), description(desc), path(chemin) {}
+        Media():description(""), path("") {}
+        Media(const QString& titre, const QString& desc):Note(titre), description(desc), path("") {}
+        Media(const  QString& titre, const  QString& desc, const  QString& chemin):Note(titre), description(desc), path(chemin) {}
         Media(const Media& m):Note(m), description(m.getDescription()), path(m.getPath()) {}
 //        Media operator=(const Media&);
         virtual ~Media();
 
     // GETTERS
-        const string& getDescription() const {return description;}
-        const string& getPath() const {return path;}
+        const QString& getDescription() const {return description;}
+        const QString& getPath() const {return path;}
 
 	// SETTERS
 
-        void setDescription(const string& newText) {description = newText;}
-        void setPath(const string& newPath) {path = newPath;}
+        void setDescription(const QString& newText) {description = newText;}
+        void setPath(const QString& newPath) {path = newPath;}
 
-        virtual string exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
+        virtual QString exportAsPart(ExportStrategy* es, unsigned int titleLevel) = 0;
 
     // LOAD / SAVE
     protected:

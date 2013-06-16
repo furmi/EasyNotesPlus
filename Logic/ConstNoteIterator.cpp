@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <set>
-#include <string>
+#include <QString>
 #include "NotesManager.h"
 #include "ConstNotesIterator.h"
 

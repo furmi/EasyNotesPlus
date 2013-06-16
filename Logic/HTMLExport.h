@@ -17,7 +17,7 @@
 #include "Video.h"
 #include<map>
 #include<list>
-#include<string>
+#include<QString>
 #include "ExportStrategy.h"
 #include <sstream>
 
@@ -49,16 +49,16 @@ namespace EasyNote
         virtual ~HTMLExport();
 
     //EXPORT
-        //virtual string exportNote(const Note* n, unsigned int titleLevel);
-        virtual string exportNote(const Article* article, unsigned int titleLevel);
-        virtual string exportNote(const Audio* audio, unsigned int titleLevel);
-        virtual string exportNote(const Image* image, unsigned int titleLevel);
-        virtual string exportNote(const Video* video, unsigned int titleLevel);
-        virtual string exportNote(const Document* d);
+        //virtual QString exportNote(const Note* n, unsigned int titleLevel);
+        virtual QString exportNote(const Article* article, unsigned int titleLevel);
+        virtual QString exportNote(const Audio* audio, unsigned int titleLevel);
+        virtual QString exportNote(const Image* image, unsigned int titleLevel);
+        virtual QString exportNote(const Video* video, unsigned int titleLevel);
+        virtual QString exportNote(const Document* d);
 
     //FOOTER & HEADER
-        virtual string header(const Note* n);
-        virtual string footer(const Note* n);
+        virtual QString header(const Note* n);
+        virtual QString footer(const Note* n);
     };
 }
 

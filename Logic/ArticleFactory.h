@@ -12,7 +12,7 @@
 #include "NoteFactory.h"
 #include "Article.h"
 #include "Note.h"
-#include <string>
+#include <QString>
 
 using namespace std;
 
@@ -24,7 +24,7 @@ namespace EasyNote
 	{
 		
 	public:
-		virtual Article* factory();
+		virtual Note* factory();
 		
 		// Destructeur
 		
