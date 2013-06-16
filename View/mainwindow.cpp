@@ -5,13 +5,18 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QDockWidget>
-//#include <QListWidget>
+#include <QMenu>
+#include <QMenuBar>
 #include <QListView>
 #include "View/EditorContent.h"
 #include "View/ToolDock.h"
 #include <QAbstractItemModel>
 #include <QStringList>
 #include <QStringListModel>
+#include <QErrorMessage>
+#include <QDebug>
+#include <QAction>
+#include <QActionGroup>
 #include "View/Dock.h"
 
 
@@ -25,7 +30,8 @@ Tout ça pour dire que je n'oublie pas mes delete: c'est volontaire
 
 ************************************************************************************************/
 
-using namespace EasyNote;
+namespace EasyNote
+{
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -41,9 +47,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::displayApp()
 {
-    // Définition du Dock
+    // Barre du menu principal
 
-
+    createMenuBar();
 
     // Définition du widget central
 
@@ -60,26 +66,8 @@ void MainWindow::displayApp()
 
     // Création du dock
 
-    //QListView* list = new QListView(dock);
-
-    //
-
     Dock* d = new Dock(dock);
 
-    //
-
-    //ToolDock* t_dock = new ToolDock(dock);  // Barre d'action
-    //QVBoxLayout* layout = new QVBoxLayout(dock);
-
-    // Disposition des widgets
-
-    //layout->addWidget(list);
-    //layout->addWidget(t_dock);
-
-    // Ajout des widgets au dock
-
-    //dock->setWidget(list);
-    //dock->setWidget(t_dock);
     dock->setWidget(d);
 
     // Ajout du dock dans la fenêtre
@@ -123,5 +111,83 @@ void MainWindow::createEditor(QTabWidget* tab)
     // Ajout des widgets au tab
 
     tab->insertTab(0,editor,"Editor");
+
+}
+
+void MainWindow::createMenuBar()
+{
+    // Crée la barre de menu principale
+
+    // Ajout des actions
+
+    createActions();
+
+    //
+
+}
+
+void MainWindow::createActions()
+{
+    /*************************************************
+
+                        MENU FILE
+
+    ************************************************/
+
+    // New File
+
+    newAct = new QAction(tr("&New"), this);
+    newAct->setShortcuts(QKeySequence::New);
+    newAct->setStatusTip(tr("Create a new file"));
+    connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
+
+    //  Load
+
+    loadAct = new QAction(tr("&Load"), this);
+    loadAct->setShortcuts(QKeySequence::Open);
+    loadAct->setStatusTip(tr("Create a new file"));
+    connect(loadAct, SIGNAL(triggered()), this, SLOT(loadFile()));
+
+    // Save
+
+    saveAct = new QAction(tr("&Save"), this);
+    saveAct->setShortcuts(QKeySequence::Save);
+    saveAct->setStatusTip(tr("Create a new file"));
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
+
+    // Ajout des actions à la barre
+
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(newAct);
+    fileMenu->addAction(loadAct);
+    fileMenu->addAction(saveAct);
+}
+
+void MainWindow::newFile()
+{
+    qDebug() << endl << "createArticle" << endl;
+
+    QErrorMessage* err = new QErrorMessage(this);
+    err->showMessage("Ça roule ma poule");
+    err->setVisible(true);
+}
+
+void MainWindow::loadFile()
+{
+    qDebug() << endl << "createArticle" << endl;
+
+    QErrorMessage* err = new QErrorMessage(this);
+    err->showMessage("Ça roule mon bichon");
+    err->setVisible(true);
+}
+
+void MainWindow::saveFile()
+{
+    qDebug() << endl << "createArticle" << endl;
+
+    QErrorMessage* err = new QErrorMessage(this);
+    err->showMessage("Ça roule ma biche");
+    err->setVisible(true);
+}
 
 }
