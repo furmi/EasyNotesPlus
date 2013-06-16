@@ -80,7 +80,7 @@ namespace EasyNote
 		
 		// Chargement du contenu
 		
-		n->load();
+        //n->load();
 		
 		return n;
 	}

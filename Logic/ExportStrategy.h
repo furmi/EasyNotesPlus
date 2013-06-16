@@ -47,10 +47,10 @@ namespace EasyNote
     //EXPORT
         //virtual QString exportNoteN(const Note* n, unsigned int titleLevel);  //permet d'exporter une note en entier
         virtual QString exportNote(const Document* d) = 0;   //permet d'exporter un document
-        virtual QString exportNote(const Article* n, unsigned int titleLevel) = 0;  //permet d'exporter un article
-        virtual QString exportNote(const Image* n, unsigned int titleLevel) = 0;  //permet d'exporter une image
-        virtual QString exportNote(const Audio* n, unsigned int titleLevel) = 0;  //permet d'exporter un son
-        virtual QString exportNote(const Video* n, unsigned int titleLevel) = 0;  //permet d'exporter une vidéo
+        virtual QString exportNote(const Article* n, unsigned int =1) = 0;  //permet d'exporter un article
+        virtual QString exportNote(const Image* n, unsigned int =1) = 0;  //permet d'exporter une image
+        virtual QString exportNote(const Audio* n, unsigned int =1) = 0;  //permet d'exporter un son
+        virtual QString exportNote(const Video* n, unsigned int =1) = 0;  //permet d'exporter une vidéo
 
     //FOOTER & HEADER
         virtual QString header(const Note* n) = 0;

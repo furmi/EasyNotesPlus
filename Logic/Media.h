@@ -22,7 +22,7 @@
 using namespace std;
 
 // Références
-friend class NotesManager;
+
 class ExportStrategy;
 
 namespace EasyNote
@@ -32,6 +32,7 @@ namespace EasyNote
 	*	\class Media : \brief Classe fille de Note, abstraite, donne la structure des médias.
 	*/
     {
+    friend class NotesManager;
     // Attributes
     protected:
         /**

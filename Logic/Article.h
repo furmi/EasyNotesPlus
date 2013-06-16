@@ -20,7 +20,6 @@ using namespace std;
 //using namespace EasyNote;
 
 // Références
-friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -32,6 +31,7 @@ namespace EasyNote
 	*	\class Article : \brief Classe fille de Note, gère des articles.
 	*/
     {
+    friend class NotesManager;
     // Attributes
 
 	QString text;

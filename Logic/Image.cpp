@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
+#include <QTextStream>
+#include <QFile>
 #include "Image.h"
 #include "ExportStrategy.h"
 
@@ -13,7 +15,7 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-    string Image::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
+    QString Image::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
     {
         cout<<"arrivé dans ExportAsPart Image\n";
         return es->exportNote(this, titleLevel);

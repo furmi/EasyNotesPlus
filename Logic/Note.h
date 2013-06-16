@@ -29,10 +29,6 @@ using namespace std;
 
 // Références
 
-friend class NotesManager;
-
-
-
 namespace EasyNote
 {
     class ExportStrategy;
@@ -42,6 +38,7 @@ namespace EasyNote
 	*	\class Note : \brief super-classe abstraite de tous les objets gérés.
 	*/
     {
+    friend class NotesManager;
     // ATTRIBUTES
     protected:
 		QString title;

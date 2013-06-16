@@ -21,7 +21,7 @@
 #define EasyNotePlus_julien_NotesManager_h
 #include <set>
 #include <map>
-#include <string> // Temporaire, j'inclus Qt une fois que j'ai implémenté qqs trucs
+#include <QString> // Temporaire, j'inclus Qt une fois que j'ai implémenté qqs trucs
 #include "NoteFactory.h" 
 #include <fstream>
 #include <iostream>
@@ -64,11 +64,11 @@ public:
 	*
 	*/
 	
-	const string getPath () const {return this->path;}
+    const QString getPath () const {return this->path;}
 	
 	 // SETTERS
 	 
-	void setPath (string& path_){this->path = path_;}
+    void setPath (QString& path_){this->path = path_;}
 	 
 	 
 	 // DIVERS
@@ -98,7 +98,7 @@ public:
 	
 	// Méthodes d'accès à la factory
 	
-	Note* getNewNote (string str,string title);
+    Note* getNewNote (QString str,QString title);
 	
 	void addNote(Note* n) {cout<<"addNote\n"; notes.insert(n);} //permet d'ajouter une note
 	void loadNote(Note* n);  //permet de charger une note
@@ -139,20 +139,20 @@ private:
 	*	\var path: \brief chemin absolu du répertoire de sauvegarde (je pensais mettre le répertoire courant au départ)
 	*/
 	
-	string path;
+    QString path;
 	
 	/**
 	*	\var factories: \brief tableau associatif contenant toutes les "usines de fabrication" (design pattern factory method)
 	*	\brief  permettant de fabriquer les différents types de notes
 	*/
 	
-	map<string,NoteFactory*> factories;
+    map<QString,NoteFactory*> factories;
 	
 	/**
 	*	\var strategies: \brief tableau associatif contenant toutes les stratégies d'exportation d'une note.
 	*/
 	
-	map<string,ExportStrategy*> strategies;
+    map<QString,ExportStrategy*> strategies;
 	
 	// CLASSES
 	

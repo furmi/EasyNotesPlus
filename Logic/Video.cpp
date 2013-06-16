@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
+#include <QTextStream>
+#include <QFile>
 #include "Video.h"
 #include "ExportStrategy.h"
 
@@ -13,7 +15,7 @@ using namespace EasyNote;
 
 namespace EasyNote
 {
-    string Video::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
+    QString Video::exportAsPart(ExportStrategy* es, unsigned int titleLevel)
     {
         cout<<"arrivé dans ExportAsPart Video\n";
         return es->exportNote(this, titleLevel);

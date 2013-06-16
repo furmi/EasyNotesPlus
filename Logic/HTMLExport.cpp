@@ -55,9 +55,8 @@ namespace EasyNote
     QString HTMLExport::exportNote(const Article* article, unsigned int titleLevel)
     {
         //conversion de titleLevel en QString
-        std::ostringstream oss;
-        oss << titleLevel;
-        QString titre = oss.str();
+
+        QString titre = QString::number(titleLevel);
 
         QString es = "";
         //balise pour le titre
@@ -74,9 +73,8 @@ namespace EasyNote
     QString HTMLExport::exportNote(const Audio* audio, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
-        std::ostringstream oss;
-        oss << titleLevel;
-        QString titre = oss.str();
+
+        QString titre = QString::number(titleLevel);
 
         QString es = "";
         //balise pour le titre
@@ -97,9 +95,8 @@ namespace EasyNote
     QString HTMLExport::exportNote(const Image* image, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
-        std::ostringstream oss;
-        oss << titleLevel;
-        QString titre = oss.str();
+
+        QString titre = QString::number(titleLevel);
 
         QString es = "";
         //balise pour le titre
@@ -118,9 +115,8 @@ namespace EasyNote
     QString HTMLExport::exportNote(const Video* video, unsigned int titleLevel)
     {
         //conversion de titleLevel en string
-        std::ostringstream oss;
-        oss << titleLevel;
-        QString titre = oss.str();
+
+        QString titre = QString::number(titleLevel);
 
         QString es = "";
         //balise pour le titre

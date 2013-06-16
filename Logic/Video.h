@@ -22,7 +22,6 @@ using namespace std;
 
 
 // Références
-friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -36,6 +35,7 @@ namespace EasyNote
 	*	\class Video : \brief Classe fille de Media, instancie des vidéos.
 	*/
     {
+    friend class NotesManager;
     // Attributes
 
     //METHODES

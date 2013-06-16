@@ -22,7 +22,6 @@
 using namespace std;
 
 // Références
-friend class NotesManager;
 
 //class ExportStrategy;
 //class Note;
@@ -34,6 +33,7 @@ namespace EasyNote
 	*	\class Document : \brief Classe fille de Note, gère des documents.
 	*/
     {
+    friend class NotesManager;
     // Attributes
     public:
         list<Note*> notes;

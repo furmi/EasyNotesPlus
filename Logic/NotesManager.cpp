@@ -7,6 +7,8 @@
 //
 
 #include <QString>
+#include <QFile>
+#include <QTextStream>
 #include "NotesManager.h"
 #include "NotesIterator.h"
 #include "ConstNotesIterator.h"
@@ -121,9 +123,10 @@ namespace EasyNote
         QString nom = ("desc.enp");
 		QFile fichier(nom);
 		if (fichier.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
             QString typeNote, title;
             unsigned long int id;
-            QTextStream flux(&fileDesc);
+            QTextStream flux(&fichier);
             while(!flux.atEnd())  //on boucle sur tout le fichier pour récupérer toutes les informations
             {
                 flux >> typeNote >> id >> title;  //permet de lire les éléments à partir du fichier (ligne par ligne)

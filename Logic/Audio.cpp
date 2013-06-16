@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 UTC. All rights reserved.
 //
 
+#include <QTextStream>
+#include <QFile>
 #include "Audio.h"
 #include "ExportStrategy.h"
 

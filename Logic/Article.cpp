@@ -22,9 +22,8 @@ namespace EasyNote
         if (!this->isLoaded())   //permet de tester si la note est déjà chargée
         {
         //conversion de l'ID en QString
-            std::ostringstream oss;
-            oss << this->getId();
-            QString id = oss.str();
+
+            QString id = QString::number(this->getId());
 			
 			QString nom = (id+".enp");
             QFile fichier(nom);
@@ -49,9 +48,8 @@ namespace EasyNote
     void Article::save()
     {
     //conversion de l'ID en string
-            std::ostringstream oss;
-            oss << this->getId();
-            QString id = oss.str();
+
+        QString id = QString::number(this->getId());
 
     //sauvegarde du fichier qui correspond à la note
         if(this->isModified())  //permet de tester si la note a été modifiée

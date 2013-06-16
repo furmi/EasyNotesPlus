@@ -21,7 +21,7 @@
 using namespace std;
 
 // Références
-friend class NotesManager;
+
 
 //class ExportStrategy;
 //class Note;
@@ -33,6 +33,7 @@ namespace EasyNote
 	*	\class Audio : \brief Classe fille de Media, instancie des fichiers audios.
 	*/
     {
+    friend class NotesManager;
     // Attributes
 
     //METHODES
